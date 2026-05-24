@@ -1,0 +1,2256 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="theme-color" content="#0a0f0a"/><title>Notre Jardin</title><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" href="/icon-192.png"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/><meta name="apple-mobile-web-app-title" content="Notre Jardin"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/> <style>*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}html,body{width:100%;height:100%;overflow:hidden;background:#050a05;font-family:'Nunito',sans-serif;color:#e0ead0;}#app{width:100%;height:100%;display:flex;flex-direction:column;max-width:480px;margin:0 auto;background:#050a05;position:relative;overflow:hidden;}::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#111}::-webkit-scrollbar-thumb{background:#2a4a2a;border-radius:2px}@keyframes grassSway{0%,100%{transform-origin:bottom center;transform:rotate(-5deg)}50%{transform-origin:bottom center;transform:rotate(5deg)}}@keyframes floatAnim{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}@keyframes shimmer{0%,100%{opacity:.6}50%{opacity:1}}@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}@keyframes pulse{0%,100%{box-shadow:0 0 6px rgba(255,200,0,.2)}50%{box-shadow:0 0 18px rgba(255,200,0,.6)}}@keyframes swayPlant{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}@keyframes popIn{0%{transform:scale(0.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}@keyframes heartBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}@keyframes slideIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}@keyframes auraGlow{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.9;transform:scale(1.08)}}@keyframes auraRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}@keyframes auraPulse{0%,100%{box-shadow:0 0 8px 2px var(--aura-color,#FFD700),inset 0 0 4px var(--aura-color,#FFD700)}50%{box-shadow:0 0 20px 6px var(--aura-color,#FFD700),inset 0 0 10px var(--aura-color,#FFD700)}}.aura-ring{position:absolute;inset:-4px;border-radius:16px;border:2px solid var(--aura-color,#FFD700);animation:auraGlow 2s ease-in-out infinite;pointer-events:none;}.aura-divine{position:absolute;inset:-6px;border-radius:18px;border:3px solid #FFD700;animation:auraGlow 1.5s ease-in-out infinite;box-shadow:0 0 16px #FFD70088;pointer-events:none;}.btn{border:none;border-radius:10px;font-family:'Nunito',sans-serif;font-weight:800;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;justify-content:center;gap:6px;}.btn-green{background:linear-gradient(135deg,#2a6e3a,#1a4a22);color:#9edd9e;padding:11px 18px;font-size:13px;}.btn-green:hover:not(:disabled){background:linear-gradient(135deg,#3a8e4a,#2a6a32);transform:translateY(-1px);}.btn-green:disabled{opacity:.4;cursor:default;}.btn-red{background:linear-gradient(135deg,#6e2a2a,#4a1a1a);color:#ddaa99;padding:9px 14px;font-size:12px;}.btn-sm{padding:7px 12px;font-size:11px;}.btn-ghost{background:rgba(255,255,255,.06);color:#99aa88;border:1px solid rgba(255,255,255,.1);padding:9px 14px;font-size:12px;}.tabs{display:flex;background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;position:relative;z-index:20;}.tab{flex:1;background:none;border:none;border-bottom:3px solid transparent;padding:10px 4px;font-family:'Nunito',sans-serif;font-weight:700;font-size:10px;color:#556644;cursor:pointer;transition:all .2s;letter-spacing:.3px;}.tab.active{color:#9edd9e;border-color:#4a9a5a;}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(8px);}.modal{background:linear-gradient(160deg,#0c1a0c,#080f08);border:2px solid #1e3e1e;border-radius:20px;padding:22px;width:100%;max-width:400px;animation:popIn .25s ease;max-height:90vh;overflow-y:auto;}.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:800;letter-spacing:.5px;}.badge-common{background:#1e2a10;color:#8B9B6B;}.badge-uncommon{background:#0d1f0d;color:#4CAF50;}.badge-rare{background:#0d1525;color:#2196F3;}.badge-epic{background:#150d25;color:#9C27B0;}.badge-legendary{background:#201000;color:#FF9800;}.plot{width:76px;height:76px;border-radius:12px;border:2px solid rgba(80,120,60,.25);background:rgba(15,35,10,.5);display:flex;align-items:center;justify-content:center;flex-direction:column;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}.plot:hover{transform:translateY(-2px);}.plot-empty{border-style:dashed;border-color:rgba(80,120,60,.2);background:rgba(10,20,8,.4);}.plot-locked{border-color:rgba(255,255,255,.07);background:rgba(5,10,5,.6);cursor:pointer;opacity:.55;}.content-scroll{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;}.info-card{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:10px 12px;}.progress-track{background:rgba(255,255,255,.08);border-radius:20px;height:7px;overflow:hidden;}.progress-fill{height:100%;border-radius:20px;transition:width .5s ease;}.auth-screen{position:absolute;inset:0;background:linear-gradient(160deg,#030a03,#000500);z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;animation:fadeUp .3s ease;}.auth-input{width:100%;padding:12px 16px;border-radius:12px;background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.1);color:#eee;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;outline:none;transition:border-color .2s;margin-bottom:10px;}.auth-input:focus{border-color:#3a7a3a;}.auth-input::placeholder{color:#446;}.social-card{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px;margin-bottom:8px;animation:fadeUp .3s ease;}.notif-badge{position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;background:#f44;border:1px solid #050a05;}.couple-setup{position:absolute;inset:0;background:linear-gradient(160deg,#030a03,#020802);z-index:90;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;animation:fadeUp .3s ease;}</style> </head><body><div id="app"></div> <script>
+
+const CATALOG=[
+  // COMMON ~15-40 coins, 2-3 days
+  {id:"f01",t:"flower",name:"Marguerite Timide",r:"common",price:15,days:2,wx:"sunny",desc:"Fleur modeste mais fidele",px:"#FFE066"},
+  {id:"f02",t:"flower",name:"Coquelicot Sauvage",r:"common",price:18,days:3,wx:"rainy",desc:"Aime la pluie du matin",px:"#FF4444"},
+  {id:"f03",t:"flower",name:"Bleuet Vif",r:"common",price:16,days:2,wx:"cloudy",desc:"Pousse par temps gris",px:"#4488FF"},
+  {id:"f04",t:"flower",name:"Tournesol Gai",r:"common",price:22,days:3,wx:"sunny",desc:"Suit le soleil toute la journee",px:"#FFCC00"},
+  {id:"f13",t:"flower",name:"Pensee Philosophe",r:"common",price:14,days:2,wx:"cloudy",desc:"Fait reflechir les papillons",px:"#9944AA"},
+  {id:"f14",t:"flower",name:"Anemone Timide",r:"common",price:16,days:3,wx:"windy",desc:"Se cache derriere les autres",px:"#FF9966"},
+  {id:"f15",t:"flower",name:"Geranium Fetard",r:"common",price:20,days:3,wx:"sunny",desc:"Toujours de bonne humeur",px:"#FF6644"},
+  {id:"f21",t:"flower",name:"Bouton d'Or Solaire",r:"common",price:12,days:2,wx:"sunny",desc:"Petit mais lumineux",px:"#FFDD00"},
+  {id:"f22",t:"flower",name:"Myosotis Bleu",r:"common",price:17,days:3,wx:"rainy",desc:"Ne m'oubliez pas!",px:"#88CCFF"},
+  {id:"t01",t:"tree",name:"Pommier Coquin",r:"common",price:35,days:5,wx:"sunny",desc:"Ses pommes tombent sur la tete",px:"#44BB44",maxAge:30},
+  {id:"t03",t:"tree",name:"Sapin de Noel",r:"common",price:40,days:6,wx:"snowy",desc:"Celebre les fetes toute l'annee",px:"#226622",maxAge:50},
+  {id:"t08",t:"tree",name:"Bouleau Elegant",r:"common",price:38,days:7,wx:"windy",desc:"Son ecorce blanche brille",px:"#EEEECC",maxAge:45},
+  // UNCOMMON ~80-180 coins, 4-6 days
+  {id:"f05",t:"flower",name:"Rose Classique",r:"uncommon",price:80,days:5,wx:"sunny",desc:"Classique mais toujours belle",px:"#FF88AA"},
+  {id:"f06",t:"flower",name:"Lavande Douce",r:"uncommon",price:90,days:4,wx:"windy",desc:"Adore le vent leger",px:"#AA88FF"},
+  {id:"f12",t:"flower",name:"Dahlia Disco",r:"uncommon",price:110,days:5,wx:"sunny",desc:"Ses petales changent de couleur",px:"#FF44BB"},
+  {id:"f16",t:"flower",name:"Lilas Enivrant",r:"uncommon",price:95,days:5,wx:"rainy",desc:"Son parfum voyage loin",px:"#CC66FF"},
+  {id:"f17",t:"flower",name:"Chrysantheme Zen",r:"uncommon",price:120,days:5,wx:"cloudy",desc:"Apporte la paix interieure",px:"#FFAACC"},
+  {id:"f23",t:"flower",name:"Jasmin Nocturne",r:"uncommon",price:130,days:6,wx:"night",desc:"Embaume la nuit entiere",px:"#FFFAAA"},
+  {id:"t02",t:"tree",name:"Cerisier en Fleurs",r:"uncommon",price:150,days:7,wx:"sunny",desc:"Magnifique 2 semaines par an",px:"#FFBBCC",maxAge:40},
+  {id:"t04",t:"tree",name:"Bananier Tropical",r:"uncommon",price:170,days:8,wx:"humid",desc:"Se prend pour etre a la plage",px:"#CCCC22",maxAge:20},
+  {id:"t06",t:"tree",name:"Bambou Zen",r:"uncommon",price:140,days:6,wx:"rainy",desc:"Pousse a une vitesse folle",px:"#44AA44",maxAge:25},
+  {id:"t07",t:"tree",name:"Palmier Vacancier",r:"uncommon",price:180,days:9,wx:"sunny",desc:"Croit toujours qu'il est en vacances",px:"#88CC44",maxAge:35},
+  // RARE ~300-600 coins, 7-12 days
+  {id:"f07",t:"flower",name:"Orchidee Mystere",r:"rare",price:320,days:7,wx:"humid",desc:"Capricieuse mais magnifique",px:"#FF66CC"},
+  {id:"f08",t:"flower",name:"Tulipe Arc-en-ciel",r:"rare",price:380,days:6,wx:"sunny",desc:"Change de couleur au soleil",px:"#FF88FF"},
+  {id:"f18",t:"flower",name:"Pivoine Royale",r:"rare",price:420,days:8,wx:"sunny",desc:"La reine des fleurs de jardin",px:"#FF77AA"},
+  {id:"f19",t:"flower",name:"Cactus Fleurissant",r:"rare",price:350,days:7,wx:"sunny",desc:"Fleurit une fois par an, surprise!",px:"#44CC44"},
+  {id:"f24",t:"flower",name:"Edelweiss Alpine",r:"rare",price:500,days:9,wx:"snowy",desc:"Nee dans la glace des sommets",px:"#F0F0FF"},
+  {id:"t05",t:"tree",name:"Chene Millenaire",r:"rare",price:550,days:14,wx:"cloudy",desc:"Presque eternel... presque",px:"#886633",maxAge:365},
+  {id:"t10",t:"tree",name:"Erable Rouge Feu",r:"rare",price:480,days:12,wx:"windy",desc:"Explose de couleurs en automne",px:"#CC2200",maxAge:60},
+  // EPIC ~900-1800 coins, 9-14 days
+  {id:"f09",t:"flower",name:"Fleur de Glace",r:"epic",price:950,days:10,wx:"snowy",desc:"Ne pousse que dans le froid",px:"#AAEEFF"},
+  {id:"f11",t:"flower",name:"Fleur Luciole",r:"epic",price:1100,days:9,wx:"night",desc:"Brille dans l'obscurite",px:"#FFFFAA"},
+  {id:"f20",t:"flower",name:"Fleur Fantome",r:"epic",price:1400,days:11,wx:"stormy",desc:"Apparait et disparait...",px:"#DDDDF0"},
+  {id:"f25",t:"flower",name:"Fleur Psychedelique",r:"epic",price:1600,days:10,wx:"any",desc:"Les couleurs n'ont pas de sens",px:"#FF00FF"},
+  {id:"t09",t:"tree",name:"Sequoia Geant",r:"epic",price:1800,days:18,wx:"rainy",desc:"Deviendra le plus grand",px:"#774422",maxAge:200},
+  // LEGENDARY ~4000-8000 coins, 18-28 days
+  {id:"f10",t:"flower",name:"Rose Noire Eternelle",r:"legendary",price:4500,days:14,wx:"stormy",desc:"La nuit lui donne sa couleur",px:"#443355"},
+  {id:"t11",t:"tree",name:"Chene Dragon",r:"legendary",price:5500,days:21,wx:"stormy",desc:"Crache du feu... un peu",px:"#FF4400",maxAge:180},
+  {id:"t12",t:"tree",name:"Arbre Licorne",r:"legendary",price:7000,days:25,wx:"any",desc:"Absolument magique et absurde",px:"#FFAAFF",maxAge:365},
+  {id:"t13",t:"tree",name:"Arbre Cristal",r:"legendary",price:8000,days:28,wx:"snowy",desc:"Ses feuilles sont en cristal pur",px:"#AAFFFF",maxAge:999},
+  // MYTHIQUE ~15000-30000 coins, 30+ days
+  {id:"m01",t:"flower",name:"Lotus Celeste",r:"mythic",price:15000,days:30,wx:"any",desc:"Ne fleurit que sous la pleine lune",px:"#FFDDFF"},
+  {id:"m02",t:"flower",name:"Fleur de l'Eternite",r:"mythic",price:22000,days:35,wx:"any",desc:"On dit qu'elle ne fane jamais",px:"#FFFFFF"},
+  {id:"m03",t:"tree",name:"Arbre du Temps",r:"mythic",price:28000,days:40,wx:"any",desc:"Ses feuilles changent de siecle en siecle",px:"#FFD700",maxAge:9999},
+  // COMMON nouveaux
+  {id:"f26",t:"flower",name:"Paquerette Farceur",r:"common",price:13,days:2,wx:"sunny",desc:"Fait semblant d'etre une etoile",px:"#FFFFFF"},
+  {id:"f27",t:"flower",name:"Capucine Rigolote",r:"common",price:19,days:3,wx:"sunny",desc:"Ses graines font des bruits bizarres",px:"#FF8822"},
+  {id:"f28",t:"flower",name:"Zinnia Disco",r:"common",price:21,days:3,wx:"sunny",desc:"Danse meme par temps calme",px:"#FF4488"},
+  {id:"t14",t:"tree",name:"Micocoulier Bavard",r:"common",price:32,days:5,wx:"windy",desc:"Siffle dans le vent pour parler",px:"#99CC55",maxAge:40},
+  {id:"t15",t:"tree",name:"Figuier Gourmand",r:"common",price:36,days:6,wx:"sunny",desc:"Ses figues disparaissent mysterieusement",px:"#554422",maxAge:35},
+  // UNCOMMON nouveaux
+  {id:"f29",t:"flower",name:"Freesia Melodieux",r:"uncommon",price:105,days:5,wx:"any",desc:"Chante quand il fait beau",px:"#FFEE77"},
+  {id:"f30",t:"flower",name:"Anthure Alien",r:"uncommon",price:140,days:6,wx:"humid",desc:"Venu d'une autre planete",px:"#FF3355"},
+  {id:"t16",t:"tree",name:"Olivier Philosophe",r:"uncommon",price:160,days:8,wx:"sunny",desc:"Reflechit depuis 2000 ans",px:"#AACC88",maxAge:50},
+  // RARE nouveaux
+  {id:"f31",t:"flower",name:"Hellebore Nocturnale",r:"rare",price:360,days:8,wx:"cloudy",desc:"Fleurit dans l'ombre profonde",px:"#7744AA"},
+  {id:"f32",t:"flower",name:"Bouvardia Etoile",r:"rare",price:400,days:7,wx:"any",desc:"Chaque petale est une etoile",px:"#FF99CC"},
+  {id:"t17",t:"tree",name:"Liquidambar Arc-en-ciel",r:"rare",price:520,days:12,wx:"windy",desc:"Ses feuilles explosent de couleurs",px:"#DD5500",maxAge:80},
+  // EPIC nouveaux
+  {id:"f33",t:"flower",name:"Protea Dragon",r:"epic",price:1200,days:12,wx:"any",desc:"Crache des petales de feu",px:"#FF5522"},
+  {id:"f34",t:"flower",name:"Dionee Mutante",r:"epic",price:1500,days:11,wx:"humid",desc:"Chasse les moustiques... et les doigts",px:"#55FF44"},
+  {id:"t18",t:"tree",name:"Wollemia Prehistorique",r:"epic",price:1700,days:16,wx:"rainy",desc:"Survivant du Jurassique",px:"#335522",maxAge:300},
+  // LEGENDARY nouveaux
+  {id:"f35",t:"flower",name:"Middlemist Rouge Sang",r:"legendary",price:6000,days:20,wx:"rainy",desc:"Une des fleurs les plus rares du monde",px:"#CC1133"},
+  {id:"t19",t:"tree",name:"Baobab Ancestral",r:"legendary",price:5000,days:22,wx:"sunny",desc:"Stocke 100 000 litres d'eau en lui",px:"#CC8844",maxAge:500},
+  {id:"t20",t:"tree",name:"Arbre Constellation",r:"legendary",price:7500,days:26,wx:"any",desc:"Ses branches dessinent les etoiles",px:"#4488FF",maxAge:999},
+  // MYTHIC nouveaux
+  {id:"m04",t:"flower",name:"Amorphophallus Geant",r:"mythic",price:18000,days:32,wx:"humid",desc:"Fleurit une seule fois tous les 10 ans",px:"#882244"},
+  {id:"m05",t:"tree",name:"Arbre a Lumiere",r:"mythic",price:25000,days:38,wx:"any",desc:"Ses feuilles brillent la nuit comme des lanternes",px:"#FFFF44",maxAge:9999},
+  {id:"m06",t:"tree",name:"Sequoia Cosmique",r:"mythic",price:30000,days:45,wx:"any",desc:"Touche les nuages... et au-dela",px:"#AA44FF",maxAge:99999},
+  // DIVINE — uniquement via coffres/events speciaux (0.01% env)
+  {id:"dv01",t:"flower",name:"Fleur de l'Aube",r:"divine",price:0,days:60,wx:"any",desc:"Certains disent qu'elle n'existe pas",px:"#FFD700"},
+  {id:"dv02",t:"flower",name:"Rose Cosmique",r:"divine",price:0,days:55,wx:"any",desc:"Nee d'une etoile morte",px:"#FF88FF"},
+  {id:"dv03",t:"tree",name:"Yggdrasil",r:"divine",price:0,days:90,wx:"any",desc:"L'arbre monde. Un seul existe par jardin",px:"#AAFFCC",maxAge:99999},
+  {id:"dv04",t:"flower",name:"Chrysantheme Celeste",r:"divine",price:0,days:70,wx:"any",desc:"Chaque petale contient un univers",px:"#88FFFF"},
+  {id:"dv05",t:"tree",name:"Arbre de Vie",r:"divine",price:0,days:99,wx:"any",desc:"La source de toute vegetation",px:"#FFFFFF",maxAge:999999},
+];
+
+const RARITIES={
+  common:{label:"Commun",color:"#8B9B6B",bg:"#1a2010",glow:""},
+  uncommon:{label:"Peu commun",color:"#4CAF50",bg:"#0d1f0d",glow:"0 0 8px #4CAF5044"},
+  rare:{label:"Rare",color:"#2196F3",bg:"#0d1525",glow:"0 0 10px #2196F344"},
+  epic:{label:"Epique",color:"#9C27B0",bg:"#150d25",glow:"0 0 12px #9C27B044"},
+  legendary:{label:"Legendaire",color:"#FF9800",bg:"#201000",glow:"0 0 16px #FF980044"},
+  mythic:{label:"Mythique",color:"#FF2277",bg:"#200010",glow:"0 0 22px #FF227788"},
+  divine:{label:"Divin",color:"#FFD700",bg:"#1a1500",glow:"0 0 30px #FFD70099,0 0 60px #FFD70033"},
+};
+
+// ============================================================
+// CHEST SYSTEM
+// ============================================================
+const CHESTS={
+  common:{id:"common",label:"Coffre Commun",color:"#8B9B6B",glow:"",
+    loot:[
+      {type:"money",amount:50,weight:40},{type:"money",amount:100,weight:25},
+      {type:"seed",rarity:"common",weight:25},{type:"seed",rarity:"uncommon",weight:9},
+      {type:"seed",rarity:"rare",weight:1},
+    ]},
+  uncommon:{id:"uncommon",label:"Coffre Peu Commun",color:"#4CAF50",glow:"0 0 8px #4CAF5044",
+    loot:[
+      {type:"money",amount:150,weight:30},{type:"money",amount:300,weight:15},
+      {type:"seed",rarity:"uncommon",weight:30},{type:"seed",rarity:"rare",weight:18},
+      {type:"seed",rarity:"epic",weight:5},{type:"boost",weight:2},
+    ]},
+  rare:{id:"rare",label:"Coffre Rare",color:"#2196F3",glow:"0 0 10px #2196F344",
+    loot:[
+      {type:"money",amount:500,weight:25},{type:"money",amount:800,weight:10},
+      {type:"seed",rarity:"rare",weight:30},{type:"seed",rarity:"epic",weight:25},
+      {type:"seed",rarity:"legendary",weight:8},{type:"boost",weight:2},
+    ]},
+  epic:{id:"epic",label:"Coffre Epique",color:"#9C27B0",glow:"0 0 12px #9C27B044",
+    loot:[
+      {type:"money",amount:1200,weight:20},{type:"seed",rarity:"epic",weight:35},
+      {type:"seed",rarity:"legendary",weight:30},{type:"seed",rarity:"mythic",weight:13},
+      {type:"boost",weight:2},
+    ]},
+  legendary:{id:"legendary",label:"Coffre Legendaire",color:"#FF9800",glow:"0 0 16px #FF980044",
+    loot:[
+      {type:"money",amount:3000,weight:20},{type:"seed",rarity:"legendary",weight:40},
+      {type:"seed",rarity:"mythic",weight:35},{type:"seed",rarity:"divine",weight:4},
+      {type:"boost",weight:1},
+    ]},
+  mythic:{id:"mythic",label:"Coffre Mythique",color:"#FF2277",glow:"0 0 22px #FF227788",
+    loot:[
+      {type:"money",amount:8000,weight:15},{type:"seed",rarity:"mythic",weight:45},
+      {type:"seed",rarity:"divine",weight:38},{type:"boost",weight:2},
+    ]},
+  divine:{id:"divine",label:"Coffre Divin",color:"#FFD700",glow:"0 0 30px #FFD70099",
+    loot:[
+      {type:"money",amount:20000,weight:10},{type:"seed",rarity:"mythic",weight:30},
+      {type:"seed",rarity:"divine",weight:59},{type:"boost",weight:1},
+    ]},
+};
+
+function openChest(chestRarity){
+  const chest=CHESTS[chestRarity];
+  if(!chest) return null;
+  const total=chest.loot.reduce((s,l)=>s+l.weight,0);
+  let roll=Math.random()*total;
+  for(const loot of chest.loot){
+    roll-=loot.weight;
+    if(roll<=0){
+      if(loot.type==="seed"){
+        // Pick random plant of that rarity
+        const pool=CATALOG.filter(x=>x.r===loot.rarity);
+        if(!pool.length) return {type:"money",amount:500};
+        const plant=pool[Math.floor(Math.random()*pool.length)];
+        return {type:"seed",plant,rarity:loot.rarity};
+      }
+      if(loot.type==="boost") return {type:"boost",hours:12};
+      return {type:"money",amount:loot.amount};
+    }
+  }
+  return {type:"money",amount:100};
+}
+
+const WEATHER=[
+  {id:"sunny",label:"Ensoleille",color:"#FFD700",mult:1.2,effect:"+20%"},
+  {id:"rainy",label:"Pluvieux",color:"#6699CC",mult:1.1,effect:"+10%"},
+  {id:"cloudy",label:"Nuageux",color:"#AAAAAA",mult:1.0,effect:"Normal"},
+  {id:"windy",label:"Venteux",color:"#88BBEE",mult:0.9,effect:"-10%"},
+  {id:"stormy",label:"Orageux",color:"#5566AA",mult:0.8,effect:"-20%"},
+  {id:"snowy",label:"Neigeux",color:"#CCDDFF",mult:0.7,effect:"-30%"},
+  {id:"humid",label:"Humide",color:"#44BBAA",mult:1.15,effect:"+15%"},
+  {id:"night",label:"Nuit etoilee",color:"#334466",mult:1.05,effect:"+5%"},
+];
+
+// freq: "daily" | "weekly" | "monthly"
+const EVENTS={
+  daily:[
+    {id:"d1",name:"Bonjour du matin",desc:"Envoyez un message affectueux dès le réveil.",diff:"easy",reward:"money",amount:25},
+    {id:"d2",name:"Photo selfie",desc:"Prenez un selfie ensemble aujourd'hui.",diff:"easy",reward:"money",amount:30},
+    {id:"d3",name:"Câlin du jour",desc:"Faites un câlin de minimum 10 secondes.",diff:"easy",reward:"money",amount:20},
+    {id:"d4",name:"Repas ensemble",desc:"Mangez au moins un repas ensemble.",diff:"easy",reward:"money",amount:28},
+    {id:"d5",name:"Regarder les nuages",desc:"Allongez-vous et regardez le ciel 5 minutes.",diff:"easy",reward:"money",amount:22},
+    {id:"d6",name:"Message surprise",desc:"Envoyez un compliment inattendu.",diff:"easy",reward:"money",amount:18},
+    {id:"d7",name:"Petit cadeau",desc:"Offrez quelque chose de symbolique (fleur, bonbon...).",diff:"easy",reward:"money",amount:35},
+    {id:"d8",name:"Photo du jardin IRL",desc:"Photographiez une plante ou fleur dans la vraie vie.",diff:"easy",reward:"money",amount:25},
+  ],
+  weekly:[
+    {id:"w1",name:"Pique-nique au soleil",desc:"Partagez un repas en plein air à deux.",diff:"medium",reward:"money",amount:150},
+    {id:"w2",name:"Coucher de soleil",desc:"Regardez le soleil se coucher ensemble, en vrai.",diff:"medium",reward:"money",amount:120},
+    {id:"w3",name:"Cuisiner ensemble",desc:"Préparez un plat original à deux.",diff:"medium",reward:"money",amount:130},
+    {id:"w4",name:"Soirée jeux",desc:"Jouez à 3 jeux de société ensemble.",diff:"medium",reward:"money",amount:140},
+    {id:"w5",name:"Jogging ensemble",desc:"Faites un jogging ou une marche de 30 minutes.",diff:"medium",reward:"money",amount:160},
+    {id:"w6",name:"Cinéma ou série",desc:"Regardez un film ensemble (ciné ou canapé).",diff:"medium",reward:"money",amount:110},
+    {id:"w7",name:"Sortie découverte",desc:"Explorez un endroit que vous n'avez jamais visité.",diff:"medium",reward:"chest",chestRarity:"uncommon"},
+    {id:"w8",name:"Soirée sans téléphone",desc:"Passez 2h ensemble sans regarder vos écrans.",diff:"medium",reward:"chest",chestRarity:"rare"},
+  ],
+  monthly:[
+    {id:"m1",name:"Nuit sous les étoiles",desc:"Dormez ou observez les étoiles dehors ensemble toute une nuit.",diff:"hard",reward:"chest",chestRarity:"rare"},
+    {id:"m2",name:"Planter pour de vrai",desc:"Plantez une vraie plante ensemble dans la vraie vie.",diff:"hard",reward:"chest",chestRarity:"epic"},
+    {id:"m3",name:"Surprise romantique",desc:"Organisez une vraie surprise pour votre partenaire.",diff:"hard",reward:"chest",chestRarity:"legendary"},
+    {id:"m4",name:"Randonnee d'une journee",desc:"Faites une randonnee de plus de 10km ensemble.",diff:"hard",reward:"chest",chestRarity:"epic"},
+    {id:"m5",name:"Week-end en amoureux",desc:"Partez au moins une nuit quelque part ensemble.",diff:"hard",reward:"chest",chestRarity:"mythic"},
+    {id:"m6",name:"Diner gastronomique",desc:"Reservez un vrai restaurant et habillez-vous pour l'occasion.",diff:"hard",reward:"chest",chestRarity:"legendary"},
+  ],
+};
+
+// Legacy flat array for compatibility
+const EVENTS_FLAT=[...EVENTS.daily,...EVENTS.weekly,...EVENTS.monthly];
+
+// Special events — rare, appear randomly
+const SPECIAL_EVENTS=[
+  {id:"sp1",name:"Pluie de meteorites",desc:"Une nuit hors du commun. Photographiez le ciel ensemble.",diff:"hard",reward:"chest",chestRarity:"legendary"},
+  {id:"sp2",name:"Eclipse solaire",desc:"Un moment rare. Observez-le ensemble sans regarder directement.",diff:"hard",reward:"chest",chestRarity:"mythic"},
+  {id:"sp3",name:"Premier flocon",desc:"La premiere neige de l'annee. Sortez et profitez-en.",diff:"medium",reward:"chest",chestRarity:"epic"},
+  {id:"sp4",name:"Arc-en-ciel double",desc:"Photographiez un arc-en-ciel ensemble.",diff:"easy",reward:"chest",chestRarity:"rare"},
+  {id:"sp5",name:"Nuit des etoiles filantes",desc:"Comptez au moins 5 etoiles filantes ensemble.",diff:"hard",reward:"chest",chestRarity:"divine"},
+  {id:"sp6",name:"Orage de printemps",desc:"Regardez l'orage depuis l'abri, ensemble.",diff:"easy",reward:"chest",chestRarity:"uncommon"},
+  {id:"sp7",name:"Soleil de minuit",desc:"Restez eveilles jusqu'a 3h du matin ensemble.",diff:"hard",reward:"chest",chestRarity:"mythic"},
+];
+
+function checkSpecialEvent(g){
+  const now=new Date();
+  const dayKey=now.toDateString();
+  if(g.specialEventDate===dayKey) return g; // already checked today
+  g.specialEventDate=dayKey;
+  g.specialEventDone=false;
+  g.specialEventPhoto=null;
+  // ~20% chance each day
+  if(Math.random()<0.20){
+    const idx=Math.floor(Math.abs(hashStr(dayKey+(g.id||"x")))%SPECIAL_EVENTS.length);
+    g.specialEvent=SPECIAL_EVENTS[idx];
+  } else {
+    g.specialEvent=null;
+  }
+  return g;
+}
+
+function getTodayEvents(g){
+  const now=new Date();
+  const dayKey=now.toDateString();
+  const weekKey="W"+Math.floor(now.getTime()/(7*864e5));
+  const monthKey=now.getFullYear()+"-"+now.getMonth();
+  if(!g.dailyEventDate||g.dailyEventDate!==dayKey){
+    g.dailyEvent=EVENTS.daily[Math.floor(Math.abs(hashStr(dayKey+g.id||"x"))%EVENTS.daily.length)];
+    g.dailyEventDate=dayKey;
+    g.dailyEventDone=false;
+  }
+  if(!g.weeklyEventDate||g.weeklyEventDate!==weekKey){
+    g.weeklyEvent=EVENTS.weekly[Math.floor(Math.abs(hashStr(weekKey+g.id||"x"))%EVENTS.weekly.length)];
+    g.weeklyEventDate=weekKey;
+    g.weeklyEventDone=false;
+  }
+  if(!g.monthlyEventDate||g.monthlyEventDate!==monthKey){
+    g.monthlyEvent=EVENTS.monthly[Math.floor(Math.abs(hashStr(monthKey+g.id||"x"))%EVENTS.monthly.length)];
+    g.monthlyEventDate=monthKey;
+    g.monthlyEventDone=false;
+  }
+  return g;
+}
+
+function hashStr(s){let h=0;for(let i=0;i<s.length;i++)h=(Math.imul(31,h)+s.charCodeAt(i))|0;return h;}
+
+
+// ============================================================
+// SUPABASE BACKEND
+// ============================================================
+const SB_URL = "https://xbrablkzclqrcyppcqvn.supabase.co";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhicmFibGt6Y2xxcmN5cHBjcXZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2MTM1MjAsImV4cCI6MjA5NTE4OTUyMH0.RVZDrbi9azzZKQotzAGNjYVA3_Bgori13k-NWAi_7mA";
+const SB_HDR = { "Content-Type":"application/json", "apikey": SB_KEY, "Authorization": "Bearer "+SB_KEY };
+
+// Cache local
+let _dbCache = null;
+let _saveTimer = null;
+
+async function sbGet(table) {
+  const r = await fetch(`${SB_URL}/rest/v1/${table}?select=*`, { headers: SB_HDR });
+  return r.ok ? r.json() : [];
+}
+
+async function sbUpsert(table, row) {
+  await fetch(`${SB_URL}/rest/v1/${table}`, {
+    method: "POST",
+    headers: { ...SB_HDR, "Prefer": "resolution=merge-duplicates,return=minimal" },
+    body: JSON.stringify(row)
+  });
+}
+
+async function sbDelete(table, id) {
+  await fetch(`${SB_URL}/rest/v1/${table}?id=eq.${id}`, { method: "DELETE", headers: SB_HDR });
+}
+
+async function sbGetSafe(table) {
+  try {
+    const r = await fetch(`${SB_URL}/rest/v1/${table}?select=*`, { headers: SB_HDR });
+    const txt = await r.text();
+    if (!r.ok) { console.error("SB error", table, r.status, txt); return []; }
+    return JSON.parse(txt);
+  } catch(e) { console.error("SB fetch error", table, e); return []; }
+}
+
+async function dbFetch() {
+  if (_dbCache) return _dbCache;
+  // Test connection first
+  const testR = await fetch(`${SB_URL}/rest/v1/nj_users?select=id&limit=1`, { headers: SB_HDR });
+  if (!testR.ok) {
+    const err = await testR.text();
+    console.error("Supabase connection failed:", testR.status, err);
+    // Show error to user
+    document.getElementById("app").innerHTML = `<div style="padding:30px;color:#f66;font-family:monospace;font-size:11px;background:#000;height:100%;overflow:auto">
+      <b>Erreur DB (${testR.status})</b><br/><br/>${err}<br/><br/>
+      <b>Headers envoyés:</b><br/>apikey: ${SB_KEY.slice(0,20)}...<br/>
+    </div>`;
+    return null;
+  }
+  try {
+    const [users, gardens, requests, ginvites] = await Promise.all([
+      sbGetSafe("nj_users"), sbGetSafe("nj_gardens"), sbGetSafe("nj_requests"), sbGetSafe("nj_ginvites")
+    ]);
+    _dbCache = {
+      users: Object.fromEntries((users||[]).map(u=>[u.id, u.data])),
+      gardens: Object.fromEntries((gardens||[]).map(g=>[g.id, g.data])),
+      requests: (requests||[]).map(r=>r.data),
+      ginvites: (ginvites||[]).map(i=>i.data),
+    };
+  } catch(e) {
+    console.error("dbFetch error:", e);
+    _dbCache = { users:{}, gardens:{}, requests:[], ginvites:[] };
+  }
+  return _dbCache;
+}
+
+async function dbSave() {
+  if (!_dbCache) return;
+  // Sync to Supabase — upsert each changed record
+  try {
+    const uPromises = [];
+    for (const [id, data] of Object.entries(_dbCache.users||{})) {
+      uPromises.push(sbUpsert("nj_users", {id, data}));
+    }
+    for (const [id, data] of Object.entries(_dbCache.gardens||{})) {
+      uPromises.push(sbUpsert("nj_gardens", {id, data}));
+    }
+    // requests and ginvites: full replace
+    for (const data of (_dbCache.requests||[])) {
+      uPromises.push(sbUpsert("nj_requests", {id: data.id, data}));
+    }
+    for (const data of (_dbCache.ginvites||[])) {
+      uPromises.push(sbUpsert("nj_ginvites", {id: data.id, data}));
+    }
+    await Promise.all(uPromises);
+  } catch(e) {
+    localStorage.setItem("nj_users", JSON.stringify(_dbCache.users||{}));
+    localStorage.setItem("nj_gardens", JSON.stringify(_dbCache.gardens||{}));
+  }
+}
+
+function dbScheduleSave() {
+  clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(() => dbSave(), 800);
+}
+
+const DB = {
+  _cache() { return _dbCache || {users:{},gardens:{},requests:[],ginvites:[]}; },
+
+  getUsers(){ return this._cache().users||{}; },
+  saveUsers(u){ if(!_dbCache)return; _dbCache.users=u; dbScheduleSave(); },
+  getUser(uid){ return this.getUsers()[uid]||null; },
+  createUser(uid,data){ const u=this.getUsers(); u[uid]=data; this.saveUsers(u); },
+  updateUser(uid,data){ const u=this.getUsers(); u[uid]={...u[uid],...data}; this.saveUsers(u); },
+
+  getGardens(){ return this._cache().gardens||{}; },
+  saveGardens(g){ if(!_dbCache)return; _dbCache.gardens=g; dbScheduleSave(); },
+  getGarden(gid){ return this.getGardens()[gid]||null; },
+  saveGarden(gid,data){ const g=this.getGardens(); g[gid]=data; this.saveGardens(g); },
+
+  getRequests(){ return this._cache().requests||[]; },
+  saveRequests(r){ if(!_dbCache)return; _dbCache.requests=r; dbScheduleSave(); },
+
+  getGardenInvites(){ return this._cache().ginvites||[]; },
+  saveGardenInvites(r){ if(!_dbCache)return; _dbCache.ginvites=r; dbScheduleSave(); },
+
+  getCurrentSession(){ try{return JSON.parse(localStorage.getItem("nj_session")||"null");}catch(e){return null;} },
+  setSession(data){ localStorage.setItem("nj_session", JSON.stringify(data)); },
+  clearSession(){ localStorage.removeItem("nj_session"); },
+
+  simHash(str){ let h=5381; for(let i=0;i<str.length;i++) h=(h*33)^str.charCodeAt(i); return (h>>>0).toString(36); },
+  genId(){ return Math.random().toString(36).slice(2,10)+Date.now().toString(36); },
+};
+
+const TODAY = new Date().toDateString();
+
+let APP = {
+  screen: "splash", 
+  currentUid: null,
+  gardenId: null,
+  currentTab: "garden",
+  pendingModal: null,
+  selectedShopItem: null,
+  toast: null,
+  authError: null,
+  calendarPermission: false,
+  notifPermission: false,
+  now: new Date(),
+};
+
+function makeShopItems(dateStr){
+  let h=0; for(let i=0;i<dateStr.length;i++) h=((h<<5)-h)+dateStr.charCodeAt(i)|0;
+  const rng=()=>{h=((h<<5)-h)+1|0;return(h&0x7fffffff)/0x7fffffff;};
+  const pool=[...CATALOG];
+  const byR=(r)=>pool.filter(p=>p.r===r);
+  const pick=(arr,n)=>[...arr].sort(()=>rng()-.5).slice(0,n);
+  const items=[
+    ...pick(byR("common"),2+Math.floor(rng()*2)),
+    ...pick(byR("uncommon"),1+Math.floor(rng()*2)),
+    ...(rng()<.7?pick(byR("rare"),1):[]),
+    ...(rng()<.3?pick(byR("epic"),1):[]),
+    ...(rng()<.08?pick(byR("legendary"),1):[]),
+  ];
+  return items.slice(0,8).map(p=>({...p,qty:1+Math.floor(rng()*3)}));
+}
+
+function makeNewGarden(uid1, uid2, relStart){
+  const wx = WEATHER[Math.floor(Math.random()*WEATHER.length)];
+  return {
+    couple: [uid1, uid2],
+    relStart,
+    money: 0,
+    plots: Array.from({length:12},(_,i)=>({id:i,plant:null,plantedAt:null,photo:null,photoDate:null})),
+    inventory:[],
+    gardenSize: 6,
+    shopItems: makeShopItems(TODAY),
+    shopDate: TODAY,
+    wx: wx.id,
+    wxDate: TODAY,
+    event: EVENTS[Math.floor(Math.random()*EVENTS.length)],
+    eventDone: false,
+    eventPhoto: null,
+    pendingReq: null,
+    notifications: [],
+    isPublic: false,
+    partnerApproved: false,
+  };
+}
+
+function getGarden(){
+  if(!APP.gardenId) return null;
+  return DB.getGarden(APP.gardenId);
+}
+
+function saveGarden(g){
+  DB.saveGarden(APP.gardenId, g);
+}
+
+function getMe(){
+  if(!APP.currentUid) return null;
+  return DB.getUser(APP.currentUid);
+}
+
+function relDays(g){
+  if(!g) return 0;
+  return Math.max(0,Math.floor((Date.now()-new Date(g.relStart).getTime())/864e5));
+}
+
+function growthOf(plot, g){
+  if(!plot.plant||!g) return 0;
+  const p=CATALOG.find(x=>x.id===plot.plant);if(!p)return 0;
+  const d=(Date.now()-new Date(plot.plantedAt).getTime())/864e5;
+  const w=WEATHER.find(x=>x.id===g.wx);
+  const mult=(p.wx===g.wx||p.wx==="any")?(w?.mult||1)*1.25:(w?.mult||1)*0.75;
+  return Math.min(1,d*mult/p.days);
+}
+
+async function requestCalendar(){
+
+  try {
+    if(window.CalendarManager || navigator.userCalendar) {
+      APP.calendarPermission = true;
+    } else {
+
+      APP.calendarPermission = true; 
+    }
+  } catch(e) { APP.calendarPermission = false; }
+  APP.now = new Date();
+  render();
+}
+
+async function requestNotifications(){
+  try {
+    if(!("Notification" in window)){showToast("Notifications non supportées");return;}
+    let perm=Notification.permission;
+    if(perm==="default"){
+      perm=await Notification.requestPermission();
+    }
+    APP.notifPermission = perm==="granted";
+    if(APP.notifPermission){
+      // Register push via SW
+      if(navigator.serviceWorker){
+        const reg=await navigator.serviceWorker.ready;
+        // Test notification
+        reg.showNotification("Notre Jardin 🌸",{body:"Notifications activées !",icon:"/icon-192.png"});
+      } else {
+        new Notification("Notre Jardin 🌸",{body:"Notifications activées !"});
+      }
+      showToast("Notifications activées !");
+      scheduleReminder();
+    } else if(perm==="denied"){
+      showToast("Bloquées — active-les dans les paramètres du navigateur");
+    } else {
+      showToast("Permission refusée");
+    }
+  } catch(e){
+    showToast("Erreur: "+e.message);
+  }
+  render();
+}
+
+function scheduleReminder(){
+  if(!APP.notifPermission) return;
+
+  const now = new Date();
+  const tomorrow = new Date(now);
+  tomorrow.setDate(tomorrow.getDate()+1);
+  tomorrow.setHours(20,0,0,0);
+  const delay = tomorrow.getTime() - now.getTime();
+  setTimeout(()=>{
+    sendNotif("Notre Jardin 🌿", "N'oubliez pas d'arroser votre jardin ce soir !");
+    scheduleReminder();
+  }, Math.min(delay, 2147483647));
+}
+
+function sendNotif(title, body, actions){
+  if(!APP.notifPermission) return;
+  try {
+    if(actions && navigator.serviceWorker?.controller) {
+      navigator.serviceWorker.ready.then(reg => {
+        reg.showNotification(title, {body, icon:"/icon-192.png", badge:"/icon-192.png", actions, requireInteraction:true, tag:"approval"});
+      });
+    } else {
+      new Notification(title, {body, icon:"/icon-192.png"});
+    }
+  } catch(e) { console.log("notif err",e); }
+}
+
+function sendApprovalNotif(msg){
+  sendNotif("Notre Jardin — Approbation requise 🌱", msg, [
+    {action:"approve", title:"✅ Accepter"},
+    {action:"reject", title:"❌ Refuser"}
+  ]);
+}
+
+function getCurrentDateTime(){
+  APP.now = new Date();
+  return APP.now;
+}
+
+function formatDateTime(d){
+  if(!d) d = getCurrentDateTime();
+  return d.toLocaleDateString("fr-FR", {weekday:"long",year:"numeric",month:"long",day:"numeric"})
+    + " à " + d.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
+}
+
+function formatDateShort(d){
+  if(!d) d = getCurrentDateTime();
+  return d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"})
+    + " " + d.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
+}
+
+function svgTabIcon(type){
+  const icons={
+    garden:`<svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" style="display:inline;vertical-align:middle"><rect x="1" y="9" width="12" height="2" fill="#4a7a3a"/><rect x="3" y="7" width="2" height="4" fill="#3a6a2a"/><rect x="9" y="7" width="2" height="4" fill="#3a6a2a"/><ellipse cx="4" cy="5" rx="3" ry="4" fill="#2d8a2d"/><ellipse cx="7" cy="3" rx="3" ry="4" fill="#3aaa3a"/><ellipse cx="10" cy="5" rx="3" ry="4" fill="#2d8a2d"/><ellipse cx="7" cy="4" rx="2" ry="3" fill="#55cc55"/></svg>`,
+    shop:`<svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" style="display:inline;vertical-align:middle"><rect x="2" y="6" width="10" height="7" rx="1" fill="#4a3a2a"/><rect x="3" y="7" width="8" height="5" fill="#5a4a3a"/><path d="M2 6 L3 2 L11 2 L12 6" fill="#6a4a2a" stroke="#7a5a3a" stroke-width=".5"/><rect x="5" y="8" width="4" height="4" rx="1" fill="#3a2a1a"/><circle cx="7" cy="4" r="1.5" fill="#FFD700"/><circle cx="4" cy="4" r="1" fill="#FFD700" opacity=".6"/><circle cx="10" cy="4" r="1" fill="#FFD700" opacity=".6"/></svg>`,
+    events:`<svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" style="display:inline;vertical-align:middle"><polygon points="7,1 8.5,5 13,5.5 9.5,8.5 10.5,13 7,10.5 3.5,13 4.5,8.5 1,5.5 5.5,5" fill="#FFD700" stroke="#CC8800" stroke-width=".5"/></svg>`,
+    social:`<svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" style="display:inline;vertical-align:middle"><circle cx="5" cy="4" r="2.5" fill="#7aaa7a"/><circle cx="9" cy="4" r="2" fill="#5a8a5a"/><rect x="2" y="7" width="6" height="4" rx="2" fill="#4a7a4a"/><rect x="7" y="7" width="5" height="4" rx="2" fill="#3a6a3a"/></svg>`,
+    profile:`<svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" style="display:inline;vertical-align:middle"><rect x="1" y="1" width="5" height="5" rx="1" fill="#4a6a8a"/><rect x="8" y="1" width="5" height="5" rx="1" fill="#4a6a8a"/><rect x="1" y="8" width="5" height="5" rx="1" fill="#4a6a8a"/><rect x="8" y="8" width="5" height="5" rx="1" fill="#FFD700"/><rect x="9" y="9" width="3" height="1" fill="#CC8800"/><rect x="9" y="11" width="3" height="1" fill="#CC8800"/></svg>`,
+  };
+  return icons[type]||"";
+}
+
+function svgLock(size){
+  const s=size;
+  return`<svg width="${s}" height="${s}" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="10" height="9" rx="2" fill="#3a4a5a" stroke="#5a6a7a" stroke-width="1"/><path d="M5 7 V4.5 A3 3 0 0 1 11 4.5 V7" fill="none" stroke="#5a6a7a" stroke-width="2" stroke-linecap="round"/><rect x="6.5" y="10" width="3" height="4" rx="1" fill="#8aaa8a" opacity=".8"/><circle cx="8" cy="10.5" r="1.5" fill="#aaccaa"/></svg>`;
+}
+
+function svgCoin(size){
+  const s=size;
+  return`<svg width="${s}" height="${s}" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7" fill="#CC8800" stroke="#FFCC00" stroke-width="1"/><circle cx="8" cy="8" r="5.5" fill="#FFAA00"/><circle cx="8" cy="8" r="4" fill="#FFD700"/><text x="8" y="11" text-anchor="middle" font-size="7" font-weight="bold" fill="#8B5500" font-family="monospace">G</text></svg>`;
+}
+
+function svgCamera(size){
+  const s=size;
+  return`<svg width="${s}" height="${s}" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="4" width="16" height="11" rx="2" fill="#2a5a8a"/><rect x="1" y="4" width="16" height="11" rx="2" stroke="#4a8acc" stroke-width="1" fill="none"/><rect x="6" y="2" width="6" height="3" rx="1" fill="#3a6a9a"/><circle cx="9" cy="10" r="3.5" fill="#1a4a6a" stroke="#4a8acc" stroke-width="1"/><circle cx="9" cy="10" r="2" fill="#88ccff" opacity=".6"/><circle cx="10" cy="9" r=".8" fill="white" opacity=".7"/><rect x="13" y="6" width="2" height="2" rx=".5" fill="#FFD700" opacity=".8"/></svg>`;
+}
+
+function svgFlower(p,size,g){
+  g=Math.min(1,Math.max(0.02,g||0.02));
+  const s=size,c=p.px||"#FFE066",c2=lightenColor(c,40),cdark=darkenColor(c,30);
+  const cx=Math.floor(s/2),cy=Math.floor(s/2);
+  const stemH=Math.floor(s*g*0.72),stemY=s-stemH;
+  let out=`<svg width="${s}" height="${s}" viewBox="0 0 ${s} ${s}" xmlns="http://www.w3.org/2000/svg" style="image-rendering:pixelated;display:block">`;
+  // Soil hint
+  if(g<=.08){
+    out+=`<rect x="${cx-6}" y="${s-6}" width="12" height="6" rx="3" fill="#6B4226"/>`;
+    out+=`<ellipse cx="${cx}" cy="${s-3}" rx="5" ry="3" fill="#8B6014" opacity=".7"/>`;
+    out+=`</svg>`;return out;
+  }
+  // Stem with pixel segments
+  const sw=Math.max(2,Math.floor(s*.06));
+  out+=`<rect x="${cx-Math.floor(sw/2)}" y="${stemY}" width="${sw}" height="${stemH}" fill="#2d6e24" rx="1"/>`;
+  // Stem highlight
+  out+=`<rect x="${cx-Math.floor(sw/2)}" y="${stemY}" width="1" height="${Math.floor(stemH*.8)}" fill="#4a9940" opacity=".7"/>`;
+  // Leaves
+  if(g>.25){
+    const leafY=stemY+Math.floor(stemH*.45);
+    out+=`<ellipse cx="${cx-Math.floor(s*.18)}" cy="${leafY}" rx="${Math.floor(s*.14)}" ry="${Math.floor(s*.07)}" fill="#3a8a30" transform="rotate(-30,${cx-Math.floor(s*.18)},${leafY})"/>`;
+    out+=`<ellipse cx="${cx-Math.floor(s*.18)}" cy="${leafY}" rx="${Math.floor(s*.06)}" ry="${Math.floor(s*.03)}" fill="#5ab040" transform="rotate(-30,${cx-Math.floor(s*.18)},${leafY})"/>`;
+  }
+  if(g>.45){
+    const leafY2=stemY+Math.floor(stemH*.25);
+    out+=`<ellipse cx="${cx+Math.floor(s*.18)}" cy="${leafY2}" rx="${Math.floor(s*.14)}" ry="${Math.floor(s*.07)}" fill="#3a8a30" transform="rotate(30,${cx+Math.floor(s*.18)},${leafY2})"/>`;
+    out+=`<ellipse cx="${cx+Math.floor(s*.18)}" cy="${leafY2}" rx="${Math.floor(s*.06)}" ry="${Math.floor(s*.03)}" fill="#5ab040" transform="rotate(30,${cx+Math.floor(s*.18)},${leafY2})"/>`;
+  }
+  // Bud or full flower
+  if(g>.65){
+    const fc=cx, fy=stemY+3;
+    const pr=Math.floor(s*.14); // petal radius
+    const angles=[0,51,103,154,206,257,309];
+    // Petals back layer (shadow)
+    angles.forEach(a=>{
+      const px2=fc+Math.cos(a*Math.PI/180)*(pr+2),py2=fy+Math.sin(a*Math.PI/180)*(pr+2);
+      out+=`<ellipse cx="${px2}" cy="${py2}" rx="${Math.floor(pr*.8)}" ry="${Math.floor(pr*.5)}" fill="${cdark}" opacity=".5" transform="rotate(${a},${px2},${py2})"/>`;
+    });
+    // Petals main
+    angles.forEach(a=>{
+      const px2=fc+Math.cos(a*Math.PI/180)*pr,py2=fy+Math.sin(a*Math.PI/180)*pr;
+      out+=`<ellipse cx="${px2}" cy="${py2}" rx="${Math.floor(pr*.85)}" ry="${Math.floor(pr*.52)}" fill="${c}" opacity=".95" transform="rotate(${a},${px2},${py2})"/>`;
+    });
+    // Petal highlights
+    angles.forEach(a=>{
+      const px2=fc+Math.cos(a*Math.PI/180)*(pr*.6),py2=fy+Math.sin(a*Math.PI/180)*(pr*.6);
+      out+=`<ellipse cx="${px2}" cy="${py2}" rx="${Math.floor(pr*.35)}" ry="${Math.floor(pr*.2)}" fill="${c2}" opacity=".6" transform="rotate(${a},${px2},${py2})"/>`;
+    });
+    // Center disk
+    out+=`<circle cx="${fc}" cy="${fy}" r="${Math.floor(pr*.55)}" fill="#FFDD44"/>`;
+    out+=`<circle cx="${fc}" cy="${fy}" r="${Math.floor(pr*.3)}" fill="#CC8800"/>`;
+    // Center dots (pollen)
+    [-2,0,2].forEach(dx=>[-2,0,2].forEach(dy=>{
+      if(Math.abs(dx)+Math.abs(dy)<4)out+=`<rect x="${fc+dx-1}" y="${fy+dy-1}" width="1" height="1" fill="#FFEE88" opacity=".8"/>`;
+    }));
+    // Divine shimmer
+    if(p.r==="divine"){
+      out+=`<circle cx="${fc}" cy="${fy}" r="${Math.floor(pr*1.4)}" fill="none" stroke="${c}" stroke-width="1.5" opacity=".4"/>`;
+      out+=`<circle cx="${fc}" cy="${fy}" r="${Math.floor(pr*1.7)}" fill="none" stroke="${c}" stroke-width="1" opacity=".2"/>`;
+    }
+  } else if(g>.3){
+    // Bud stage
+    const bx=cx,by=stemY+2,br=Math.floor(s*.1);
+    out+=`<ellipse cx="${bx}" cy="${by+br}" rx="${br}" ry="${Math.floor(br*1.3)}" fill="${cdark}"/>`;
+    out+=`<ellipse cx="${bx}" cy="${by+br}" rx="${Math.floor(br*.7)}" ry="${Math.floor(br*1.0)}" fill="${c}"/>`;
+    out+=`<ellipse cx="${bx-Math.floor(br*.3)}" cy="${by+br}" rx="${Math.floor(br*.25)}" ry="${Math.floor(br*.7)}" fill="${c2}" opacity=".5"/>`;
+    // Sepals
+    out+=`<ellipse cx="${bx-Math.floor(br*.6)}" cy="${by+Math.floor(br*1.8)}" rx="${Math.floor(br*.5)}" ry="${Math.floor(br*.3)}" fill="#2d6e24" transform="rotate(-40,${bx-Math.floor(br*.6)},${by+Math.floor(br*1.8)})"/>`;
+    out+=`<ellipse cx="${bx+Math.floor(br*.6)}" cy="${by+Math.floor(br*1.8)}" rx="${Math.floor(br*.5)}" ry="${Math.floor(br*.3)}" fill="#2d6e24" transform="rotate(40,${bx+Math.floor(br*.6)},${by+Math.floor(br*1.8)})"/>`;
+  }
+  out+=`</svg>`;return out;
+}
+
+function lightenColor(hex,amount){
+  const r=Math.min(255,parseInt(hex.slice(1,3),16)+amount),g2=Math.min(255,parseInt(hex.slice(3,5),16)+amount),b=Math.min(255,parseInt(hex.slice(5,7),16)+amount);
+  return`#${r.toString(16).padStart(2,"0")}${g2.toString(16).padStart(2,"0")}${b.toString(16).padStart(2,"0")}`;
+}
+function darkenColor(hex,amount){
+  const r=Math.max(0,parseInt(hex.slice(1,3),16)-amount),g2=Math.max(0,parseInt(hex.slice(3,5),16)-amount),b=Math.max(0,parseInt(hex.slice(5,7),16)-amount);
+  return`#${r.toString(16).padStart(2,"0")}${g2.toString(16).padStart(2,"0")}${b.toString(16).padStart(2,"0")}`;
+}
+
+function svgTree(p,size,g){
+  g=Math.min(1,Math.max(0.02,g||0.02));
+  const s=size,c=p.px||"#44BB44",cdark=darkenColor(c,35),clight=lightenColor(c,35);
+  const cx=Math.floor(s/2);
+  let out=`<svg width="${s}" height="${s}" viewBox="0 0 ${s} ${s}" xmlns="http://www.w3.org/2000/svg" style="image-rendering:pixelated;display:block">`;
+  if(g<=.06){
+    // Seed in soil
+    out+=`<rect x="${cx-6}" y="${s-6}" width="12" height="6" rx="3" fill="#6B4226"/>`;
+    out+=`<ellipse cx="${cx}" cy="${s-3}" rx="4" ry="3" fill="#8B6014" opacity=".7"/>`;
+    out+=`</svg>`;return out;
+  }
+  const trunkW=Math.max(3,Math.floor(s*.1));
+  const trunkH=Math.floor(s*g*.42);
+  const trunkY=s-trunkH;
+  // Trunk with bark texture
+  out+=`<rect x="${cx-Math.floor(trunkW/2)}" y="${trunkY}" width="${trunkW}" height="${trunkH}" fill="#6B4226" rx="2"/>`;
+  out+=`<rect x="${cx-Math.floor(trunkW/2)+1}" y="${trunkY+2}" width="1" height="${Math.floor(trunkH*.7)}" fill="#8B5a36" opacity=".6"/>`;
+  // Bark lines (pixel art detail)
+  if(trunkH>10){
+    [.3,.6].forEach(yf=>{
+      out+=`<rect x="${cx-Math.floor(trunkW/2)}" y="${trunkY+Math.floor(trunkH*yf)}" width="${trunkW}" height="1" fill="#4a2a16" opacity=".5"/>`;
+    });
+  }
+  if(g>.18){
+    const cr=Math.floor(s*g*.34);
+    const canopyY=trunkY-Math.floor(cr*.8);
+    // Shadow/depth layer
+    out+=`<circle cx="${cx+2}" cy="${canopyY+3}" r="${cr}" fill="${cdark}" opacity=".5"/>`;
+    // Main canopy
+    out+=`<circle cx="${cx}" cy="${canopyY}" r="${cr}" fill="${c}"/>`;
+    if(g>.4){
+      // Secondary clusters for fullness
+      out+=`<circle cx="${cx-Math.floor(cr*.5)}" cy="${canopyY+Math.floor(cr*.3)}" r="${Math.floor(cr*.65)}" fill="${cdark}" opacity=".75"/>`;
+      out+=`<circle cx="${cx+Math.floor(cr*.5)}" cy="${canopyY+Math.floor(cr*.3)}" r="${Math.floor(cr*.65)}" fill="${c}" opacity=".85"/>`;
+    }
+    if(g>.6){
+      out+=`<circle cx="${cx}" cy="${canopyY-Math.floor(cr*.35)}" r="${Math.floor(cr*.55)}" fill="${clight}" opacity=".7"/>`;
+    }
+    if(g>.8){
+      // Extra side puffs
+      out+=`<circle cx="${cx-Math.floor(cr*.7)}" cy="${canopyY+Math.floor(cr*.1)}" r="${Math.floor(cr*.45)}" fill="${cdark}" opacity=".6"/>`;
+      out+=`<circle cx="${cx+Math.floor(cr*.7)}" cy="${canopyY+Math.floor(cr*.1)}" r="${Math.floor(cr*.45)}" fill="${c}" opacity=".6"/>`;
+    }
+    // Highlight spot (light source top-left)
+    out+=`<ellipse cx="${cx-Math.floor(cr*.25)}" cy="${canopyY-Math.floor(cr*.2)}" rx="${Math.floor(cr*.35)}" ry="${Math.floor(cr*.25)}" fill="${clight}" opacity=".45"/>`;
+    // Fruits or special detail for mature
+    if(g>=1&&c!=="#226622"&&c!=="#EEEECC"){
+      const fruitColor=["#FF4444","#FFAA00","#FF8866","#FFDD00"][Math.floor(parseInt(p.id?.slice(-2)||"0",16)%4)];
+      [[-cr*.3,cr*.15],[cr*.3,cr*.2],[0,cr*.35],[cr*.4,-cr*.1],[-cr*.4,0]].forEach(([dx,dy])=>{
+        out+=`<circle cx="${cx+Math.floor(dx)}" cy="${canopyY+Math.floor(dy)}" r="2" fill="${fruitColor}" opacity=".9"/>`;
+      });
+    }
+    // Divine ring
+    if(p.r==="divine"){
+      out+=`<circle cx="${cx}" cy="${canopyY}" r="${cr+4}" fill="none" stroke="${c}" stroke-width="2" opacity=".5"/>`;
+      out+=`<circle cx="${cx}" cy="${canopyY}" r="${cr+8}" fill="none" stroke="${c}" stroke-width="1" opacity=".25"/>`;
+    }
+  } else {
+    // Sapling stage — just a thin trunk with tiny leaves
+    out+=`<ellipse cx="${cx-5}" cy="${trunkY+4}" rx="6" ry="4" fill="${c}" opacity=".8" transform="rotate(-20,${cx-5},${trunkY+4})"/>`;
+    out+=`<ellipse cx="${cx+5}" cy="${trunkY+7}" rx="6" ry="4" fill="${cdark}" opacity=".7" transform="rotate(20,${cx+5},${trunkY+7})"/>`;
+  }
+  out+=`</svg>`;return out;
+}
+
+function svgAI(mode,size){
+  const m={garden:{body:"#2d5a1e",head:"#4a8a2a",eye:"#aaff44"},shop:{body:"#4a1a6e",head:"#7a2aaa",eye:"#ff88ff"},verify:{body:"#5a3a1a",head:"#8a5a2a",eye:"#ffaa44"},water:{body:"#1a3a6e",head:"#2a5aaa",eye:"#44aaff"}};
+  const c=m[mode]||m.garden; const s=size;
+  return`<svg width="${s}" height="${s}" viewBox="0 0 ${s} ${s}" xmlns="http://www.w3.org/2000/svg">
+<rect x="8" y="${s/2}" width="${s-16}" height="${s/2-4}" rx="4" fill="${c.body}"/>
+<rect x="4" y="${s*0.25}" width="${s-8}" height="${s*0.42}" rx="${s*.12}" fill="${c.head}"/>
+<circle cx="${s*.33}" cy="${s*.42}" r="${s*.1}" fill="${c.eye}"/>
+<circle cx="${s*.67}" cy="${s*.42}" r="${s*.1}" fill="${c.eye}"/>
+<rect x="${s*.38}" y="${s*.6}" width="${s*.24}" height="${s*.07}" rx="2" fill="${c.eye}" opacity=".6"/>
+<rect x="${s*.2}" y="${s*.58}" width="5" height="${s*.25}" rx="2" fill="${c.body}" opacity=".8"/>
+<rect x="${s*.75}" y="${s*.58}" width="5" height="${s*.25}" rx="2" fill="${c.body}" opacity=".8"/>
+</svg>`;
+}
+
+function showToast(msg, dur=2500){
+  APP.toast=msg;
+  render();
+  setTimeout(()=>{ APP.toast=null; render(); }, dur);
+}
+
+let incomeTimer=null;
+function startIncome(){
+  clearInterval(incomeTimer);
+  incomeTimer=setInterval(()=>{
+    const g=getGarden(); if(!g) return;
+    const d=relDays(g);
+    // 1-3 coins per minute depending on relationship age — slower economy
+    const earn=Math.max(1,Math.floor(Math.sqrt(d)*0.4));
+    g.money+=earn;
+    saveGarden(g);
+    render();
+  },60000); // every minute instead of 30s
+}
+
+function render(){
+  const el=document.getElementById("app");
+  APP.now = new Date();
+
+  const g=getGarden();
+  if(g){
+    const td=new Date().toDateString();
+    if(g.shopDate!==td){g.shopItems=makeShopItems(td);g.shopDate=td;saveGarden(g);}
+    if(g.wxDate!==td){g.wx=WEATHER[Math.floor(Math.random()*WEATHER.length)].id;g.wxDate=td;saveGarden(g);}
+    getTodayEvents(g);
+    checkSpecialEvent(g);
+    saveGarden(g);
+  }
+
+  let html="";
+
+  if(APP.screen==="inventory"){
+    html=renderInventory();
+  } else if(APP.screen==="splash"){
+    html=renderSplash();
+  } else if(APP.screen==="login"){
+    html=renderLogin();
+  } else if(APP.screen==="register"){
+    html=renderRegister();
+  } else if(APP.screen==="coupleSetup"){
+    html=renderCoupleSetup();
+  } else if(APP.screen==="main"){
+    html=renderMain(g);
+  }
+
+  if(APP.toast){
+    html+=`<div style="position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:rgba(20,50,20,.95);border:1px solid #3a6a3a;color:#9edd9e;padding:10px 18px;border-radius:20px;font-size:12px;font-weight:700;z-index:9999;white-space:nowrap;animation:fadeUp .3s ease">${APP.toast}</div>`;
+  }
+
+  el.innerHTML=html;
+}
+
+function renderInventory(){
+  const g=getGarden();
+  const inv=(g?.inventory||[]);
+  const chests=inv.filter(x=>x.type==="chest");
+  const seeds=inv.filter(x=>x.type==="seed");
+  const boosts=inv.filter(x=>x.type==="boost");
+
+  function chestCard(item,idx){
+    const chest=CHESTS[item.chestRarity]||CHESTS.common;
+    const rar=RARITIES[item.chestRarity]||RARITIES.common;
+    return`<div style="display:flex;align-items:center;gap:12px;padding:12px;background:${rar.bg};border:1.5px solid ${chest.color}55;border-radius:12px;margin-bottom:8px">
+      <div style="flex-shrink:0">${svgChest(item.chestRarity)}</div>
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:900;color:${chest.color}">${chest.label}</div>
+        <div style="font-size:9px;color:#446;margin-top:2px">${new Date(item.obtainedAt).toLocaleDateString("fr-FR")}</div>
+      </div>
+      <div style="display:flex;gap:6px">
+        <button onclick="APP.pendingModal={type:'openChest',chestRarity:'${item.chestRarity}',invIdx:${idx}};render()" style="background:${chest.color}22;border:1px solid ${chest.color}55;color:${chest.color};padding:6px 12px;border-radius:8px;font-size:10px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif">OUVRIR</button>
+        <button onclick="offerChestTrade(${idx})" style="background:rgba(255,255,255,.05);border:1px solid #334;color:#668;padding:6px 10px;border-radius:8px;font-size:10px;cursor:pointer;font-family:'Nunito',sans-serif">ECHANGE</button>
+      </div>
+    </div>`;
+  }
+
+  function seedCard(item,idx){
+    const plant=CATALOG.find(x=>x.id===item.plantId);
+    if(!plant) return "";
+    const rar=RARITIES[plant.r]||RARITIES.common;
+    return`<div style="display:flex;align-items:center;gap:12px;padding:12px;background:${rar.bg};border:1.5px solid ${rar.color}55;border-radius:12px;margin-bottom:8px">
+      <div style="flex-shrink:0">${svgPlant(plant.px,1.2)}</div>
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:900;color:${rar.color}">${plant.name}</div>
+        <div style="font-size:9px;color:#668;margin-top:2px">${rar.label} · ${plant.days}j de croissance</div>
+      </div>
+      <button onclick="plantFromInventory(${idx})" style="background:${rar.color}22;border:1px solid ${rar.color}55;color:${rar.color};padding:6px 12px;border-radius:8px;font-size:10px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif">PLANTER</button>
+    </div>`;
+  }
+
+  return`<div style="min-height:100vh;background:#0a0f07;padding:16px 12px 90px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+      <button onclick="APP.screen='main';render()" style="background:none;border:none;color:#668;font-size:20px;cursor:pointer">←</button>
+      <div style="font-size:16px;font-weight:900;color:#eee;font-family:'Press Start 2P',monospace;font-size:13px">INVENTAIRE</div>
+    </div>
+    ${chests.length?`
+    <div style="font-size:10px;font-weight:800;color:#668;letter-spacing:2px;margin-bottom:10px">COFFRES (${chests.length})</div>
+    ${chests.map((c,i)=>chestCard(c,inv.indexOf(c))).join("")}`:`<div style="padding:20px;text-align:center;color:#334;font-size:11px">Aucun coffre — complète des événements !</div>`}
+    ${seeds.length?`
+    <div style="font-size:10px;font-weight:800;color:#668;letter-spacing:2px;margin:14px 0 10px">GRAINES (${seeds.length})</div>
+    ${seeds.map((s,i)=>seedCard(s,inv.indexOf(s))).join("")}`:""}
+    ${boosts.length?`
+    <div style="font-size:10px;font-weight:800;color:#668;letter-spacing:2px;margin:14px 0 10px">BOOSTS (${boosts.length})</div>
+    ${boosts.map((b,i)=>`<div style="padding:12px;background:rgba(68,255,170,.05);border:1.5px solid #44ffaa55;border-radius:12px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between">
+      <div><div style="font-size:12px;font-weight:900;color:#44ffaa">BOOST x2 — ${b.hours}h</div><div style="font-size:9px;color:#446;margin-top:2px">Toutes les plantes poussent 2x plus vite</div></div>
+      <button onclick="useBoost(${inv.indexOf(b)})" style="background:#44ffaa22;border:1px solid #44ffaa55;color:#44ffaa;padding:6px 12px;border-radius:8px;font-size:10px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif">UTILISER</button>
+    </div>`).join("")}`:""}
+  </div>`;
+}
+
+window.plantFromInventory=function(invIdx){
+  const g=getGarden();if(!g)return;
+  const item=g.inventory[invIdx];
+  if(!item||item.type!=="seed")return;
+  const plant=CATALOG.find(x=>x.id===item.plantId);
+  if(!plant){showToast("Plante introuvable");return;}
+  const emptyIdx=g.plots.findIndex((p,i)=>!p.plant&&i<g.gardenSize);
+  if(emptyIdx===-1){showToast("Jardin plein !");return;}
+  g.plots[emptyIdx]={...g.plots[emptyIdx],plant:plant.id,plantedAt:new Date().toISOString(),photo:null};
+  g.inventory.splice(invIdx,1);
+  g.notifications.push({id:Date.now(),text:`"${plant.name}" planté depuis l'inventaire !`,read:false});
+  saveGarden(g);
+  showToast(`${plant.name} planté !`);
+  APP.screen="main";
+  render();
+};
+
+window.useBoost=function(invIdx){
+  const g=getGarden();if(!g)return;
+  const item=g.inventory[invIdx];
+  if(!item||item.type!=="boost")return;
+  g.boostUntil=new Date(Date.now()+item.hours*3600000).toISOString();
+  g.inventory.splice(invIdx,1);
+  saveGarden(g);
+  showToast("Boost activé ! Toutes vos plantes poussent 2x plus vite pendant "+item.hours+"h !");
+  render();
+};
+
+window.offerChestTrade=function(invIdx){
+  showToast("Echange bientôt disponible !");
+};
+
+function renderSplash(){
+  dbFetch().then(()=>{
+    const sess=DB.getCurrentSession();
+    if(sess?.uid){
+      APP.currentUid=sess.uid;
+      const u=DB.getUser(sess.uid);
+      if(u?.gardenId){
+        APP.gardenId=u.gardenId;
+        APP.screen="main";
+      } else {
+        APP.screen="coupleSetup";
+      }
+    } else {
+      APP.screen="login";
+    }
+    render();
+  });
+  return`<div class="auth-screen" style="gap:0">
+<div style="font-family:'Press Start 2P',monospace;font-size:18px;color:#4a9a5a;text-align:center;line-height:1.6;animation:floatAnim 2s ease-in-out infinite">
+Notre<br/>Jardin
+</div>
+<div style="margin-top:24px;font-size:20px;animation:floatAnim 2s ease-in-out infinite">${svgFlower({px:"#FF88AA"},56,1)}</div>
+<div style="margin-top:20px;font-size:11px;color:#446;animation:shimmer 1.2s ease infinite">Chargement...</div>
+</div>`;
+}
+
+function renderLogin(){
+  return`<div class="auth-screen">
+<div style="font-family:'Press Start 2P',monospace;font-size:16px;color:#4a9a5a;margin-bottom:6px">Notre Jardin</div>
+<div style="font-size:11px;color:#446;margin-bottom:32px">Le jardin de votre couple</div>
+<div style="width:100%;max-width:340px">
+<input class="auth-input" id="loginEmail" type="email" placeholder="Adresse e-mail" autocomplete="email"/>
+<input class="auth-input" id="loginPassword" type="password" placeholder="Mot de passe" autocomplete="current-password"/>
+${APP.authError?`<div style="font-size:11px;color:#f66;text-align:center;margin-bottom:8px">${APP.authError}</div>`:""}
+<button class="btn btn-green" style="width:100%;margin-bottom:12px;font-size:14px" onclick="doLogin()">Se connecter</button>
+<button class="btn btn-ghost" style="width:100%" onclick="APP.screen='register';APP.authError=null;render()">Creer un compte</button>
+</div>
+<div style="position:absolute;bottom:30px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:8px">
+${typeof deferredInstallPrompt!=="undefined"&&deferredInstallPrompt?`
+<button onclick="installApp()" style="background:linear-gradient(135deg,#1a3a6e,#0d2248);border:1px solid #2a5aaa;color:#88ccff;padding:9px 18px;border-radius:20px;font-size:11px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;animation:pulse 2s ease infinite">
+📲 Installer l'application
+</button>`:(navigator.userAgent.includes("iPhone")||navigator.userAgent.includes("iPad"))?`
+<div onclick="showIosInstallTip()" style="background:rgba(26,58,110,.35);border:1px solid #2a5aaa44;color:#88aacc;padding:8px 16px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;text-align:center">
+INSTALLER SUR IPHONE
+</div>`:""}
+<div style="font-size:10px;color:#334">Notre Jardin v2.0</div>
+</div>
+</div>`;
+}
+
+async function doLogin(){
+  const email=document.getElementById("loginEmail")?.value?.trim().toLowerCase();
+  const pass=document.getElementById("loginPassword")?.value;
+  if(!email||!pass){APP.authError="Remplis tous les champs";render();return;}
+  APP.authError="Connexion...";render();
+  _dbCache=null; // force refresh from server
+  await dbFetch();
+  const users=DB.getUsers();
+  const uid=Object.keys(users).find(k=>users[k].email===email);
+  if(!uid){APP.authError="Compte introuvable";render();return;}
+  const u=users[uid];
+  if(u.passwordHash!==DB.simHash(pass)){APP.authError="Mot de passe incorrect";render();return;}
+  APP.currentUid=uid;
+  APP.authError=null;
+  DB.setSession({uid});
+  if(u.gardenId){
+    APP.gardenId=u.gardenId;
+    APP.screen="main";
+    startIncome();
+  } else {
+    APP.screen="coupleSetup";
+  }
+  render();
+}
+
+function renderRegister(){
+  return`<div class="auth-screen">
+<div style="font-family:'Press Start 2P',monospace;font-size:14px;color:#4a9a5a;margin-bottom:4px">Nouveau compte</div>
+<div style="font-size:11px;color:#446;margin-bottom:28px">Rejoins Notre Jardin !</div>
+<div style="width:100%;max-width:340px">
+<input class="auth-input" id="regPseudo" type="text" placeholder="Pseudo (visible publiquement)" maxlength="20"/>
+<input class="auth-input" id="regEmail" type="email" placeholder="Adresse e-mail" autocomplete="email"/>
+<input class="auth-input" id="regPassword" type="password" placeholder="Mot de passe" autocomplete="new-password"/>
+<input class="auth-input" id="regPassword2" type="password" placeholder="Confirmer le mot de passe"/>
+${APP.authError?`<div style="font-size:11px;color:#f66;text-align:center;margin-bottom:8px">${APP.authError}</div>`:""}
+<button class="btn btn-green" style="width:100%;margin-bottom:12px;font-size:14px" onclick="doRegister()">Creer mon compte</button>
+<button class="btn btn-ghost" style="width:100%" onclick="APP.screen='login';APP.authError=null;render()">Deja un compte</button>
+</div>
+</div>`;
+}
+
+async function doRegister(){
+  const pseudo=document.getElementById("regPseudo")?.value?.trim();
+  const email=document.getElementById("regEmail")?.value?.trim().toLowerCase();
+  const pass=document.getElementById("regPassword")?.value;
+  const pass2=document.getElementById("regPassword2")?.value;
+  if(!pseudo||!email||!pass||!pass2){APP.authError="Remplis tous les champs";render();return;}
+  if(pass!==pass2){APP.authError="Les mots de passe ne correspondent pas";render();return;}
+  if(pass.length<6){APP.authError="Mot de passe trop court (6 chars min)";render();return;}
+  APP.authError="Création du compte...";render();
+  _dbCache=null; // force refresh to check uniqueness
+  await dbFetch();
+  const users=DB.getUsers();
+  if(Object.values(users).find(u=>u.email===email)){APP.authError="Email deja utilise";render();return;}
+  if(Object.values(users).find(u=>u.pseudo===pseudo)){APP.authError="Pseudo deja pris";render();return;}
+  const uid=DB.genId();
+  const userData={uid,pseudo,email,passwordHash:DB.simHash(pass),joinedAt:new Date().toISOString(),gardenId:null,friendIds:[],biggestRelDays:0};
+  DB.createUser(uid,userData);
+  try {
+    await dbSave();
+    // Verify it saved
+    const testR = await fetch(`${SB_URL}/rest/v1/nj_users?select=id&id=eq.${uid}`, {headers: SB_HDR});
+    const testJ = await testR.json();
+    if (!testR.ok || !testJ.length) {
+      APP.authError = "Erreur sauvegarde: " + (testR.status) + " " + JSON.stringify(testJ).slice(0,100);
+      render();
+      return;
+    }
+  } catch(e) {
+    APP.authError = "Erreur réseau: " + e.message;
+    render();
+    return;
+  }
+  APP.currentUid=uid;
+  APP.authError=null;
+  DB.setSession({uid});
+  APP.screen="coupleSetup";
+  render();
+}
+
+let coupleSetupMode="menu"; 
+function renderCoupleSetup(){
+  const me=getMe();
+  const invites=DB.getGardenInvites().filter(i=>i.toUid===APP.currentUid&&i.status==="pending");
+
+  return`<div class="couple-setup">
+<div style="text-align:center;margin-bottom:8px">
+${svgFlower({px:"#FF88AA"},52,1)}
+</div>
+<div style="font-family:'Press Start 2P',monospace;font-size:12px;color:#4a9a5a;margin-bottom:4px;text-align:center">Bienvenue ${me?.pseudo||""} !</div>
+<div style="font-size:11px;color:#446;margin-bottom:24px;text-align:center">Tu n'as pas encore de jardin.<br/>Commence un jardin avec ton partenaire !</div>
+${coupleSetupMode==="menu"?renderCoupleMenu(invites):coupleSetupMode==="create"?renderCoupleCreate():coupleSetupMode==="join"?renderCoupleJoin():renderCoupleInvites(invites)}
+<button onclick="doLogout()" style="position:absolute;top:16px;right:16px;background:none;border:none;color:#334;font-size:11px;cursor:pointer;font-family:'Nunito'">Deconnexion</button>
+</div>`;
+}
+
+function renderCoupleMenu(invites){
+  return`<div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:10px">
+<button class="btn btn-green" style="width:100%;font-size:13px" onclick="coupleSetupMode='create';render()">
+🌱 Creer un nouveau jardin
+</button>
+<button class="btn btn-ghost" style="width:100%;font-size:13px" onclick="coupleSetupMode='join';render()">
+🔗 Rejoindre le jardin d'un partenaire
+</button>
+${invites.length>0?`<button class="btn" style="width:100%;font-size:13px;background:rgba(255,200,0,.12);border:1px solid rgba(255,200,0,.3);color:#FFD700" onclick="coupleSetupMode='invites';render()">
+💌 ${invites.length} invitation${invites.length>1?"s":""} en attente
+</button>`:""}
+<div style="font-size:10px;color:#334;text-align:center;margin-top:8px">Ton ID: <span style="font-family:'Press Start 2P';font-size:9px;color:#556">${APP.currentUid.slice(0,8)}</span></div>
+</div>`;
+}
+
+function renderCoupleCreate(){
+  return`<div style="width:100%;max-width:340px">
+<div style="font-size:12px;color:#668;margin-bottom:12px;text-align:center">Quand avez-vous commencé votre couple ?</div>
+<input class="auth-input" id="relStartDate" type="date" value="${new Date().toISOString().slice(0,10)}" style="text-align:center"/>
+<div style="font-size:11px;color:#446;margin-bottom:12px;text-align:center">Ton partenaire recevra une invitation</div>
+<input class="auth-input" id="partnerPseudo" placeholder="Pseudo ou ID du partenaire"/>
+<button class="btn btn-green" style="width:100%;margin-bottom:10px" onclick="sendGardenInvite()">Envoyer l'invitation</button>
+<button class="btn btn-ghost" style="width:100%" onclick="coupleSetupMode='menu';render()">Retour</button>
+</div>`;
+}
+
+function renderCoupleJoin(){
+  return`<div style="width:100%;max-width:340px">
+<div style="font-size:12px;color:#668;margin-bottom:12px;text-align:center">Rejoindre un jardin existant.<br/>Ton partenaire doit t'envoyer une invitation.</div>
+<div style="font-size:11px;color:#446;margin-bottom:16px;text-align:center">Ton ID a partager:<br/><span style="font-family:'Press Start 2P';font-size:9px;color:#9edd9e">${APP.currentUid.slice(0,8)}</span></div>
+<button class="btn" style="width:100%;margin-bottom:10px;background:rgba(255,200,0,.1);border:1px solid rgba(255,200,0,.2);color:#FFD700" onclick="copyMyId()">Copier mon ID</button>
+<button class="btn btn-ghost" style="width:100%;" onclick="coupleSetupMode='invites';render()">Voir les invitations reçues</button>
+<button class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="coupleSetupMode='menu';render()">Retour</button>
+</div>`;
+}
+
+function renderCoupleInvites(invites){
+  const invHtml=invites.length===0?`<div style="color:#446;font-size:12px;text-align:center;padding:16px">Aucune invitation en attente</div>`:
+    invites.map(inv=>{
+      const fromUser=DB.getUser(inv.fromUid);
+      const start=new Date(inv.relStart);
+      const d=Math.max(0,Math.floor((Date.now()-start.getTime())/864e5));
+      const bonus=Math.max(1,Math.floor(d/5))*d;
+      return`<div style="background:rgba(255,200,0,.07);border:1px solid rgba(255,200,0,.2);border-radius:12px;padding:12px;margin-bottom:8px">
+<div style="font-size:13px;font-weight:800;color:#eee">${fromUser?.pseudo||"Inconnu"}</div>
+<div style="font-size:11px;color:#668;margin-top:3px">Debut du couple: ${start.toLocaleDateString("fr-FR")} — ${d} jours</div>
+<div style="font-size:11px;color:#FFD700;margin-top:3px">+${bonus} pieces de bienvenue !</div>
+<div style="display:flex;gap:8px;margin-top:10px">
+<button class="btn btn-red btn-sm" style="flex:1" onclick="rejectGardenInvite('${inv.id}')">Refuser</button>
+<button class="btn btn-green btn-sm" style="flex:1" onclick="acceptGardenInvite('${inv.id}')">Accepter !</button>
+</div>
+</div>`;
+    }).join("");
+
+  return`<div style="width:100%;max-width:340px">
+<div style="font-size:12px;color:#668;margin-bottom:12px;text-align:center">Invitations reçues</div>
+${invHtml}
+<button class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="coupleSetupMode='menu';render()">Retour</button>
+</div>`;
+}
+
+async function sendGardenInvite(){
+  const pseudo=document.getElementById("partnerPseudo")?.value?.trim();
+  const relStart=document.getElementById("relStartDate")?.value;
+  if(!pseudo||!relStart){showToast("Remplis tous les champs");return;}
+  showToast("Recherche en cours...");
+  _dbCache=null;
+  await dbFetch();
+  const users=DB.getUsers();
+  const searchLower=pseudo.toLowerCase();
+  const partnerUid=Object.keys(users).find(k=>{
+    const u=users[k];
+    return u.pseudo?.toLowerCase()===searchLower
+      || u.pseudo?.toLowerCase().includes(searchLower)
+      || k===pseudo
+      || k.slice(0,8)===pseudo;
+  });
+  if(!partnerUid||partnerUid===APP.currentUid){showToast("Introuvable — "+Object.keys(users).length+" comptes en base");return;}
+  const partner=users[partnerUid];
+  if(partner.gardenId){showToast("Ce partenaire a deja un jardin");return;}
+  const invites=DB.getGardenInvites();
+  if(invites.find(i=>i.fromUid===APP.currentUid&&i.toUid===partnerUid&&i.status==="pending")){showToast("Invitation deja envoyee");return;}
+  const inv={id:DB.genId(),fromUid:APP.currentUid,toUid:partnerUid,relStart:new Date(relStart).toISOString(),status:"pending",sentAt:new Date().toISOString()};
+  invites.push(inv);
+  DB.saveGardenInvites(invites);
+  await dbSave();
+  showToast("Invitation envoyee a "+partner.pseudo+" !");
+  coupleSetupMode="menu";
+  render();
+}
+
+function copyMyId(){
+  try{navigator.clipboard.writeText(APP.currentUid.slice(0,8));}catch(e){}
+  showToast("ID copié !");
+}
+
+function acceptGardenInvite(invId){
+  const invites=DB.getGardenInvites();
+  const inv=invites.find(i=>i.id===invId);
+  if(!inv)return;
+  inv.status="accepted";
+  DB.saveGardenInvites(invites);
+
+  const gid=DB.genId();
+  const relStart=inv.relStart;
+  const d=Math.max(0,Math.floor((Date.now()-new Date(relStart).getTime())/864e5));
+  const g=makeNewGarden(inv.fromUid,APP.currentUid,relStart);
+  const bonus=Math.max(0,Math.floor(d/5)*d+d*10);
+  g.money=bonus;
+  DB.saveGarden(gid,g);
+
+  DB.updateUser(inv.fromUid,{gardenId:gid});
+  DB.updateUser(APP.currentUid,{gardenId:gid});
+  APP.gardenId=gid;
+  APP.screen="main";
+  startIncome();
+  showToast(`Jardin creé ! +${bonus} pieces pour ${d} jours ensemble !`);
+  render();
+}
+
+function rejectGardenInvite(invId){
+  const invites=DB.getGardenInvites();
+  const inv=invites.find(i=>i.id===invId);
+  if(inv)inv.status="rejected";
+  DB.saveGardenInvites(invites);
+  showToast("Invitation refusee");
+  render();
+}
+
+function renderMain(g){
+  const me=getMe();
+  const unreadNotifs=g?g.notifications.filter(n=>!n.read).length:0;
+  const friendRequests=DB.getRequests().filter(r=>r.to===APP.currentUid&&r.status==="pending").length;
+  const gardenInvites=DB.getGardenInvites().filter(i=>i.toUid===APP.currentUid&&i.status==="pending").length;
+  const totalBadge=unreadNotifs+friendRequests+gardenInvites;
+
+  const tabs=[
+    {id:"garden",label:svgTabIcon("garden")+" Jardin"},
+    {id:"shop",label:svgTabIcon("shop")+" Marché"},
+    {id:"events",label:svgTabIcon("events")+" Défis"},
+    {id:"social",label:svgTabIcon("social")+" Social"},
+    {id:"profile",label:svgTabIcon("profile")+" Profil"},
+  ];
+
+  let content="";
+  if(APP.currentTab==="garden") content=renderGardenTab(g);
+  else if(APP.currentTab==="shop") content=renderShopTab(g);
+  else if(APP.currentTab==="events") content=renderEventsTab(g);
+  else if(APP.currentTab==="social") content=renderSocialTab();
+  else if(APP.currentTab==="profile") content=renderProfileTab(g);
+
+  const modalHtml=APP.pendingModal?renderModal(APP.pendingModal,g):"";
+
+  return`
+<div class="tabs">
+${tabs.map(t=>`<button class="tab ${APP.currentTab===t.id?"active":""}" onclick="switchTab('${t.id}')">
+<div style="position:relative;display:inline-block">
+${t.label}
+${t.id==="social"&&totalBadge>0?`<span class="notif-badge"></span>`:""}
+</div>
+</button>`).join("")}
+</div>
+<div class="content-scroll">${content}</div>
+${modalHtml}
+`;
+}
+
+function renderGardenTab(g){
+  if(!g) return`<div style="padding:24px;text-align:center;color:#446">Pas de jardin trouvé</div>`;
+  const me=getMe();
+  const users=DB.getUsers();
+  const partner=g.couple.find(uid=>uid!==APP.currentUid);
+  const partnerName=partner?DB.getUser(partner)?.pseudo:"?";
+  const myName=me?.pseudo||"Toi";
+  const wx=WEATHER.find(x=>x.id===g.wx)||WEATHER[0];
+  const rd=relDays(g);
+
+  let plotsHtml="";
+  for(let i=0;i<12;i++){
+    const plot=g.plots[i];
+    const locked=i>=g.gardenSize;
+    if(locked){
+      const cost=(i+1)*150;
+      plotsHtml+=`<div class="plot plot-locked" onclick="unlockPlot(${i})">
+        <div style="display:flex;align-items:center;justify-content:center">${svgLock(20)}</div>
+        <div style="font-size:8px;color:#446;margin-top:3px;display:flex;align-items:center;gap:2px">${cost}${svgCoin(12)}</div>
+      </div>`;
+      continue;
+    }
+    if(!plot.plant){
+      plotsHtml+=`<div class="plot plot-empty" onclick="openPlotModal(${i})">
+        <div style="font-size:18px;opacity:.4">+</div>
+      </div>`;
+      continue;
+    }
+    const plant=CATALOG.find(x=>x.id===plot.plant);
+    const gr=growthOf(plot,g);
+    const rar=plant?RARITIES[plant.r]:null;
+    const plantSvg=plant?(plant.t==="flower"?svgFlower(plant,48,gr):svgTree(plant,48,gr)):"";
+    const idealWx=plant&&(plant.wx===g.wx||plant.wx==="any");
+    const auraHtml=gr>=1&&plant?`<div class="aura-ring" style="--aura-color:${rar?.color||"#9edd9e"};${plant.r==="divine"?"box-shadow:0 0 16px 4px "+rar.color+"88;":""}"></div>`:"";
+plotsHtml+=`<div class="plot" style="border-color:${rar?.color||"#4a6a3a"}44;box-shadow:${gr>=1?(rar?.glow||""):""}${plant?.r==="divine"?"0 0 24px #FFD70066,0 0 48px #FFD70022":""}" onclick="openPlotModal(${i})">
+${auraHtml}
+${plot.photo?`<div style="position:absolute;top:3px;left:3px">${svgCamera(14)}</div>`:""}
+<div style="animation:swayPlant 3s ease-in-out infinite">${plantSvg}</div>
+<div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:rgba(0,0,0,.3);border-radius:0 0 10px 10px;overflow:hidden">
+  <div style="height:100%;width:${Math.floor(gr*100)}%;background:${gr>=1?"#44ff44":rar?.color||"#9edd9e"};transition:width 1s ease"></div>
+</div>
+<div style="position:absolute;bottom:6px;right:4px;font-size:7px;font-weight:800;color:${gr>=1?"#44ff44":rar?.color||"#9edd9e"};font-family:'Press Start 2P',monospace">${gr>=1?"✓":"${Math.floor(gr*100)}%"}</div>
+${!idealWx&&gr<1?`<div style="position:absolute;top:3px;right:3px;width:7px;height:7px;border-radius:50%;background:#FF6633" title="Météo défavorable"></div>`:""}
+</div>`;
+  }
+
+  const notifs=g.notifications.filter(n=>!n.read);
+  const notifHtml=notifs.length>0?`
+<div style="margin-top:12px;padding:10px 14px;background:rgba(74,175,80,.1);border:1px solid rgba(74,175,80,.3);border-radius:12px;display:flex;justify-content:space-between;align-items:center;animation:fadeUp .3s ease">
+<div style="font-size:12px;font-weight:700;color:#9edd9e">${notifs.slice(-1)[0]?.text||""}</div>
+<button onclick="clearNotifs()" style="background:none;border:none;color:#668;cursor:pointer;font-size:18px;padding:0 0 0 8px">×</button>
+</div>`:"";
+
+  const planted=g.plots.filter(p=>p.plant).length;
+
+  return`<div style="padding:12px 12px 90px">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+<div style="font-size:11px;color:#557"><span class="heart" style="color:#ff88aa">♥</span> ${myName} & ${partnerName}</div>
+<div style="display:flex;align-items:center;gap:6px">
+  <button onclick="checkPartnerRequests()" style="background:rgba(255,200,0,.12);border:1px solid rgba(255,200,0,.25);color:#FFD700;border-radius:8px;font-size:9px;font-weight:800;padding:4px 8px;cursor:pointer;font-family:'Nunito',sans-serif">DEMANDES</button>
+  <button onclick="showInventory()" style="background:rgba(68,255,170,.1);border:1px solid rgba(68,255,170,.25);color:#44ffaa;border-radius:8px;font-size:9px;font-weight:800;padding:4px 8px;cursor:pointer;font-family:'Nunito',sans-serif">SAC ${(g.inventory||[]).length>0?"("+g.inventory.length+")":""}</button>
+  <div style="font-size:11px;color:#FFD700;font-weight:700;display:flex;align-items:center;gap:2px">${g.money}${svgCoin(13)}</div>
+</div>
+</div>
+<div style="font-size:10px;color:#334;text-align:center;margin-bottom:8px">📅 ${formatDateTime(APP.now)}</div>
+<div style="position:relative;background:rgba(20,50,15,.4);border-radius:16px;padding:14px 10px 32px;border:1px solid rgba(80,140,60,.2);min-height:260px">
+<div style="display:grid;grid-template-columns:repeat(4,76px);gap:8px;justify-content:center">
+${plotsHtml}
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+<div class="info-card">
+<div style="font-size:10px;color:#557;font-weight:700">Ensemble depuis</div>
+<div style="font-size:16px;font-weight:900;color:#dde;margin-top:3px">${rd} <span style="font-size:10px;color:#556">jours</span></div>
+</div>
+<div class="info-card">
+<div style="font-size:10px;color:#557;font-weight:700">Météo — croissance</div>
+<div style="font-size:12px;font-weight:800;color:${wx.color};margin-top:3px">${wx.label} ${wx.effect}</div>
+</div>
+</div>
+${g.pendingReq?`
+<div style="margin-top:10px;padding:12px;background:rgba(255,200,0,.07);border:1px solid rgba(255,200,0,.25);border-radius:12px">
+<div style="font-size:11px;color:#FFD700;font-weight:800;margin-bottom:6px">Demande en attente</div>
+<div style="font-size:12px;color:#dde;margin-bottom:8px">${CATALOG.find(x=>x.id===g.pendingReq?.itemId)?.name||"Achat"}</div>
+<div style="display:flex;gap:8px">
+<button class="btn btn-red btn-sm" style="flex:1" onclick="rejectReq()">Refuser</button>
+<button class="btn btn-green btn-sm" style="flex:1" onclick="approveReq()">Accepter</button>
+</div>
+</div>`:""}
+${notifHtml}
+</div>`;
+}
+
+function renderShopTab(g){
+  if(!g) return`<div style="padding:24px;text-align:center;color:#446">Pas de jardin</div>`;
+  let itemsHtml="";
+  for(const item of g.shopItems){
+    const rar=RARITIES[item.r];
+    const canAfford=g.money>=item.price;
+    const plantSvg=item.t==="flower"?svgFlower(item,38,1):svgTree(item,38,1);
+    const wxLabel=WEATHER.find(x=>x.id===item.wx)?.label||item.wx;
+    const sel=APP.selectedShopItem===item.id;
+    itemsHtml+=`
+<div onclick="selectShopItem('${item.id}')" style="padding:10px;background:linear-gradient(160deg,${rar.bg},#060e06);border-radius:12px;border:2px solid ${sel?rar.color:rar.color+"28"};cursor:pointer;transition:all .15s;box-shadow:${sel?rar.glow:""};opacity:${canAfford?1:.55}">
+<div style="display:flex;gap:8px;align-items:center">
+<div style="flex-shrink:0;animation:swayPlant 3s ease-in-out infinite">${plantSvg}</div>
+<div style="flex:1;min-width:0">
+<div style="font-size:11px;font-weight:800;color:#dde;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${item.name}</div>
+<span class="badge badge-${item.r}" style="margin-top:2px;display:inline-block">${rar.label}</span>
+<div style="font-size:11px;font-weight:800;color:#FFD700;margin-top:3px;display:flex;align-items:center;gap:3px">${item.price}${svgCoin(12)}</div>
+</div>
+</div>
+<div style="font-size:9px;color:#556;margin-top:5px">Stock: ${item.qty} — ${item.t==="flower"?"Fleur":"Arbre"} — ${wxLabel}</div>
+</div>`;
+  }
+
+  const selItem=g.shopItems.find(x=>x.id===APP.selectedShopItem);
+  const detailHtml=selItem?`
+<div style="margin-top:10px;padding:14px;background:rgba(0,0,0,.35);border:1px solid ${RARITIES[selItem.r].color}33;border-radius:12px;animation:fadeUp .2s ease">
+<div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px">
+<div>
+<div style="font-weight:800;font-size:14px;color:#eee">${selItem.name}</div>
+<div style="font-size:11px;color:#888;margin-top:3px">${selItem.desc}</div>
+</div>
+<div style="text-align:right;flex-shrink:0;margin-left:10px">
+<span class="badge badge-${selItem.r}">${RARITIES[selItem.r].label}</span>
+<div style="font-size:14px;font-weight:800;color:#FFD700;margin-top:4px;display:flex;align-items:center;gap:3px">${selItem.price}${svgCoin(14)}</div>
+</div>
+</div>
+<div style="font-size:10px;color:#668;margin-bottom:10px">Pousse en ${selItem.days} jour${selItem.days>1?"s":""} — Météo idéale: ${WEATHER.find(x=>x.id===selItem.wx)?.label||selItem.wx}</div>
+<button class="btn btn-green" style="width:100%;font-size:12px" onclick="requestBuy('${selItem.id}')" ${g.money<selItem.price?"disabled":""}>
+${g.money<selItem.price?"Pas assez de pièces":"Demander approbation au partenaire 💬"}
+</button>
+<div style="font-size:10px;color:#445;text-align:center;margin-top:6px">Ton partenaire devra accepter l'achat</div>
+</div>`:"";
+
+  return`<div style="padding:12px 12px 90px">
+<div style="display:flex;align-items:flex-end;gap:10px;padding:12px 14px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.1);border-radius:14px;margin-bottom:14px">
+<div style="flex-shrink:0">${svgAI("shop",44)}</div>
+<div>
+<div style="font-size:10px;color:#888;margin-bottom:2px">Marchando Oro — Vendeur</div>
+<div style="font-size:12px;color:#ddd;line-height:1.4">Stock limité, tout change demain !</div>
+</div>
+</div>
+<div style="font-size:11px;color:#668;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:3px">Stock du jour — ${g.money}${svgCoin(12)} disponibles</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${itemsHtml}</div>
+${detailHtml}
+</div>`;
+}
+
+function renderEventsTab(g){
+  if(!g) return`<div style="padding:24px;text-align:center;color:#446">Pas de jardin</div>`;
+  const diffColor={easy:"#4CAF50",medium:"#FF9800",hard:"#f44336"};
+  const diffLabel={easy:"Facile",medium:"Moyen",hard:"Difficile"};
+
+  function rewardTxt(ev){
+    if(ev.reward==="money") return ev.amount+" pièces 🪙";
+    if(ev.reward==="rare_seed") return "🌟 Graine RARE";
+    if(ev.reward==="epic_seed") return "💜 Graine ÉPIQUE";
+    return "🌱 Graine spéciale";
+  }
+
+  function evCard(ev, doneKey, photoKey, photoDateKey, freq, freqLabel, freqColor){
+    const done=g[doneKey];
+    const photo=g[photoKey];
+    const photoDate=g[photoDateKey];
+    return`<div style="padding:14px;background:rgba(0,0,0,.3);border:2px solid ${freqColor}33;border-radius:16px;margin-bottom:12px;animation:fadeUp .3s ease">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+<span style="font-size:9px;font-weight:800;padding:2px 10px;background:${freqColor}22;color:${freqColor};border-radius:20px">${freqLabel}</span>
+<span style="font-size:9px;font-weight:800;padding:2px 10px;background:${diffColor[ev.diff]}22;color:${diffColor[ev.diff]};border-radius:20px">${diffLabel[ev.diff]}</span>
+</div>
+<div style="font-size:14px;font-weight:900;color:#eee;margin-bottom:6px">${ev.name}</div>
+<div style="font-size:11px;color:#99aa88;line-height:1.5;margin-bottom:10px">${ev.desc}</div>
+<div style="padding:7px 12px;background:rgba(255,200,0,.07);border:1px solid rgba(255,200,0,.15);border-radius:8px;margin-bottom:10px;font-size:11px;color:#FFD700;font-weight:700">${rewardTxt(ev)}</div>
+${done?`<div style="text-align:center;padding:10px;font-size:12px;font-weight:800;color:#4CAF50">DEFI COMPLETE !</div>
+${photo?`<div style="margin-top:8px;border-radius:10px;overflow:hidden;border:2px solid #4a8a4a"><img src="${photo}" style="width:100%;display:block;max-height:180px;object-fit:cover"/>${photoDate?`<div style="padding:5px 8px;background:rgba(0,0,0,.5);font-size:10px;color:#668">${photoDate}</div>`:""}</div>`:""}
+`:`<input type="file" id="evPhoto_${freq}" accept="image/*" style="display:none" onchange="handleEventPhoto(event,'${doneKey}','${photoKey}','${photoDateKey}')"/>
+<button class="btn btn-green" style="width:100%;font-size:12px" onclick="document.getElementById('evPhoto_${freq}').click()">PHOTO PREUVE</button>`}
+</div>`;
+  }
+
+  return`<div style="padding:12px 12px 90px">
+<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08);border-radius:12px;margin-bottom:14px">
+<div style="flex-shrink:0">${svgAI("verify",36)}</div>
+<div style="font-size:11px;color:#aaa">Inspector Légume valide vos défis 🕵️</div>
+</div>
+${evCard(g.dailyEvent||EVENTS.daily[0],"dailyEventDone","dailyEventPhoto","dailyEventPhotoDate","daily","QUOTIDIEN","#4CAF50")}
+${evCard(g.weeklyEvent||EVENTS.weekly[0],"weeklyEventDone","weeklyEventPhoto","weeklyEventPhotoDate","weekly","HEBDO","#FF9800")}
+${evCard(g.monthlyEvent||EVENTS.monthly[0],"monthlyEventDone","monthlyEventPhoto","monthlyEventPhotoDate","monthly","MENSUEL","#f44336")}
+${g.specialEvent?`
+<div style="padding:14px;background:rgba(255,215,0,.05);border:2px solid #FFD70066;border-radius:16px;margin-bottom:12px;animation:pulse 2s ease infinite,fadeUp .3s ease;box-shadow:0 0 20px #FFD70022">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+<span style="font-size:9px;font-weight:800;padding:2px 10px;background:#FFD70022;color:#FFD700;border-radius:20px;letter-spacing:1px">EVENEMENT SPECIAL</span>
+<span style="font-size:9px;font-weight:800;padding:2px 10px;background:#f4433622;color:#f44336;border-radius:20px">${{easy:"Facile",medium:"Moyen",hard:"Difficile"}[g.specialEvent.diff]}</span>
+</div>
+<div style="font-size:14px;font-weight:900;color:#FFD700;margin-bottom:6px">${g.specialEvent.name}</div>
+<div style="font-size:11px;color:#99aa88;line-height:1.5;margin-bottom:10px">${g.specialEvent.desc}</div>
+<div style="padding:7px 12px;background:rgba(255,215,0,.1);border:1px solid #FFD70033;border-radius:8px;margin-bottom:10px;font-size:11px;color:#FFD700;font-weight:700">COFFRE ${(CHESTS[g.specialEvent.chestRarity]?.label||"").toUpperCase()}</div>
+${g.specialEventDone?`<div style="text-align:center;padding:10px;font-size:12px;font-weight:800;color:#4CAF50">DEFI COMPLETE !</div>`
+:`<input type="file" id="evPhoto_special" accept="image/*" style="display:none" onchange="handleEventPhoto(event,'specialEventDone','specialEventPhoto','specialEventPhotoDate')"/>
+<button class="btn btn-green" style="width:100%;font-size:12px;background:linear-gradient(135deg,#aa8800,#665500);border-color:#FFD700" onclick="document.getElementById('evPhoto_special').click()">PHOTO PREUVE</button>`}
+</div>`:""}
+</div>`;
+}
+
+function renderSocialTab(){
+  const me=getMe();
+  const users=DB.getUsers();
+  const allUsers=Object.values(users).filter(u=>u.uid!==APP.currentUid);
+  const friends=allUsers.filter(u=>(me?.friendIds||[]).includes(u.uid));
+  const requests=DB.getRequests().filter(r=>r.to===APP.currentUid&&r.status==="pending");
+  const gardenInvites=DB.getGardenInvites().filter(i=>i.toUid===APP.currentUid&&i.status==="pending");
+  const pendingSent=DB.getRequests().filter(r=>r.from===APP.currentUid&&r.status==="pending");
+
+  const gardens=DB.getGardens();
+  const publicGardens=Object.entries(gardens).filter(([gid,g])=>g.isPublic).map(([gid,g])=>({gid,...g}));
+
+  const reqsHtml=requests.length>0?`
+<div style="margin-bottom:16px">
+<div style="font-size:11px;font-weight:800;color:#FFD700;margin-bottom:8px">Demandes d'amis (${requests.length})</div>
+${requests.map(r=>{
+const fromU=DB.getUser(r.from);
+return`<div class="social-card" style="display:flex;justify-content:space-between;align-items:center">
+<div style="font-size:13px;font-weight:800;color:#eee">${fromU?.pseudo||"Inconnu"}</div>
+<div style="display:flex;gap:6px">
+<button class="btn btn-red btn-sm" onclick="rejectFriend('${r.id}')">Refuser</button>
+<button class="btn btn-green btn-sm" onclick="acceptFriend('${r.id}')">Accepter</button>
+</div>
+</div>`;
+}).join("")}
+</div>`:"";
+
+  const gardenInvHtml=gardenInvites.length>0?`
+<div style="margin-bottom:16px;padding:12px;background:rgba(255,200,0,.07);border:1px solid rgba(255,200,0,.2);border-radius:12px">
+<div style="font-size:11px;color:#FFD700;font-weight:800;margin-bottom:6px">💌 Invitation jardin en attente</div>
+<button class="btn btn-green" style="width:100%;font-size:12px" onclick="coupleSetupMode='invites';APP.screen='coupleSetup';render()">Voir les invitations (${gardenInvites.length})</button>
+</div>`:"";
+
+  const friendsHtml=friends.length>0?`
+<div style="margin-bottom:16px">
+<div style="font-size:11px;font-weight:800;color:#9edd9e;margin-bottom:8px">Mes amis (${friends.length})</div>
+${friends.map(u=>{
+const g=u.gardenId?DB.getGarden(u.gardenId):null;
+const rd2=g?relDays(g):0;
+return`<div class="social-card" style="display:flex;gap:10px;align-items:center" onclick="${g?.isPublic?"openFriendGarden('"+u.uid+"')":''}">
+<div style="width:36px;height:36px;border-radius:50%;background:rgba(74,175,80,.15);border:1px solid rgba(74,175,80,.3);display:flex;align-items:center;justify-content:center;font-size:16px">🌱</div>
+<div style="flex:1">
+<div style="font-size:13px;font-weight:800;color:#eee">${u.pseudo}</div>
+<div style="font-size:10px;color:#556">${g?`Jardin: ${rd2} jours`:"Pas de jardin"} ${u.biggestRelDays>0?`• Record: ${u.biggestRelDays}j`:""}</div>
+</div>
+${g?.isPublic?`<div style="font-size:10px;color:#4CAF50">Voir 🌿</div>`:""}
+</div>`;
+}).join("")}
+</div>`:"";
+
+  const discoverHtml=publicGardens.length>0?`
+<div style="margin-bottom:16px">
+<div style="font-size:11px;font-weight:800;color:#668;margin-bottom:8px">Jardins publics</div>
+${publicGardens.map(g=>{
+const u1=DB.getUser(g.couple[0]);
+const u2=DB.getUser(g.couple[1]);
+const rd2=relDays(g);
+const planted=g.plots.filter(p=>p.plant).length;
+return`<div class="social-card" onclick="viewPublicGarden('${g.gid}')">
+<div style="display:flex;gap:8px;align-items:center">
+<div style="font-size:13px;font-weight:800;color:#eee">${u1?.pseudo||"?"} & ${u2?.pseudo||"?"}</div>
+<span style="font-size:9px;color:#4CAF50;background:rgba(74,175,80,.1);padding:2px 6px;border-radius:10px">PUBLIC</span>
+</div>
+<div style="font-size:10px;color:#556;margin-top:3px">${rd2} jours ensemble • ${planted} plante${planted>1?"s":""}</div>
+</div>`;
+}).join("")}
+</div>`:"";
+
+  return`<div style="padding:12px 12px 90px">
+${gardenInvHtml}
+${reqsHtml}
+<div class="info-card" style="margin-bottom:16px">
+<div style="font-size:11px;font-weight:800;color:#668;margin-bottom:8px">Ajouter un ami</div>
+<div style="display:flex;gap:8px">
+<input id="addFriendInput" class="auth-input" placeholder="Pseudo ou ID" style="margin-bottom:0;flex:1;padding:9px 12px;font-size:12px"/>
+<button class="btn btn-green btn-sm" onclick="sendFriendRequest()">Demander</button>
+</div>
+<div style="font-size:10px;color:#334;margin-top:6px">Ton ID: <span style="font-family:'Press Start 2P';font-size:9px;color:#9edd9e" onclick="copyMyId()">${APP.currentUid.slice(0,8)}</span> (appuie pour copier)</div>
+</div>
+${friendsHtml}
+${pendingSent.length>0?`<div style="font-size:11px;color:#446;margin-bottom:12px">${pendingSent.length} demande${pendingSent.length>1?"s":""} envoyée${pendingSent.length>1?"s":""} en attente</div>`:""}
+${discoverHtml}
+${friends.length===0&&requests.length===0&&publicGardens.length===0?`
+<div style="text-align:center;padding:24px;color:#334;font-size:12px">
+<div style="font-size:24px;margin-bottom:8px">🌍</div>
+Ajoute des amis pour voir leurs jardins !
+</div>`:""}
+</div>`;
+}
+
+function renderProfileTab(g){
+  const me=getMe();
+  const rd=g?relDays(g):0;
+
+  return`<div style="padding:12px 12px 90px">
+<div class="social-card" style="text-align:center;padding:20px;margin-bottom:12px">
+<div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#2a6e3a,#1a4a22);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:24px">🌱</div>
+<div style="font-size:17px;font-weight:900;color:#eee">${me?.pseudo||"?"}</div>
+<div style="font-size:11px;color:#446;margin-top:3px">${me?.email||""}</div>
+<div style="font-size:11px;color:#556;margin-top:6px">Membre depuis ${me?.joinedAt?new Date(me.joinedAt).toLocaleDateString("fr-FR"):""}</div>
+${g?`<div style="font-size:11px;color:#9edd9e;margin-top:4px">Jardin actuel: ${rd} jours ♥</div>`:""}
+</div>
+${g?(()=>{
+  const partnerId=g.partnerUid||g.members?.find(m=>m!==APP.currentUid);
+  const partner=partnerId?DB.getUser(partnerId):null;
+  return partner?`<div class="social-card" style="margin-bottom:12px;padding:14px">
+<div style="font-size:11px;font-weight:800;color:#668;margin-bottom:10px">TON PARTENAIRE</div>
+<div style="display:flex;align-items:center;gap:12px">
+<div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#6e2a6e,#4a1a4a);display:flex;align-items:center;justify-content:center;font-size:20px">🌸</div>
+<div>
+<div style="font-size:14px;font-weight:900;color:#eee">${partner.pseudo}</div>
+<div style="font-size:10px;color:#446">${partner.email||""}</div>
+<div style="font-size:10px;color:#9edd9e;margin-top:2px">Membre depuis ${partner.joinedAt?new Date(partner.joinedAt).toLocaleDateString("fr-FR"):""}</div>
+</div>
+</div>
+</div>`:"";
+})():""}
+${g?`<div class="info-card" style="margin-bottom:12px">
+<div style="font-size:11px;font-weight:800;color:#668;margin-bottom:10px">PARAMÈTRES DU JARDIN</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+<div>
+<div style="font-size:12px;color:#dde;font-weight:700">Jardin public</div>
+<div style="font-size:10px;color:#446">Visible par tous les joueurs</div>
+</div>
+<button onclick="togglePublic()" style="width:44px;height:24px;border-radius:12px;border:none;cursor:pointer;background:${g.isPublic?"#2a6e3a":"#1a1a2a"};position:relative;transition:background .2s">
+<div style="position:absolute;top:3px;width:18px;height:18px;border-radius:50%;background:${g.isPublic?"#9edd9e":"#445"};transition:left .2s;left:${g.isPublic?"23px":"3px"}"></div>
+</button>
+</div>
+</div>`:""}
+<div class="info-card" style="margin-bottom:12px">
+<div style="font-size:11px;font-weight:800;color:#668;margin-bottom:10px">PERMISSIONS</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+<div>
+<div style="font-size:12px;color:#dde;font-weight:700">📅 Calendrier</div>
+<div style="font-size:10px;color:#446">${APP.calendarPermission?"Accès accordé":"Requis pour l'horodatage des photos"}</div>
+</div>
+<button class="btn btn-sm ${APP.calendarPermission?"btn-ghost":"btn-green"}" onclick="requestCalendar()">
+${APP.calendarPermission?"✓ OK":"Activer"}
+</button>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div>
+<div style="font-size:12px;color:#dde;font-weight:700">NOTIFICATIONS</div>
+<div style="font-size:10px;color:#446">${APP.notifPermission?"Actives":"Rappels et approbations"}</div>
+</div>
+<button class="btn btn-sm ${APP.notifPermission?"btn-ghost":"btn-green"}" onclick="requestNotifications()">
+${APP.notifPermission?"✓ OK":"Activer"}
+</button>
+</div>
+</div>
+<div class="info-card" style="margin-bottom:12px">
+<div style="font-size:11px;font-weight:800;color:#668;margin-bottom:8px">INFOS PUBLIQUES</div>
+<div style="font-size:11px;color:#99aa88">Pseudo: <b style="color:#eee">${me?.pseudo}</b></div>
+<div style="font-size:11px;color:#99aa88;margin-top:4px">Plus longue relation: <b style="color:#FFD700">${Math.max(me?.biggestRelDays||0,rd)} jours</b></div>
+</div>
+${typeof deferredInstallPrompt!=="undefined"&&deferredInstallPrompt?`
+<button onclick="installApp()" style="width:100%;background:linear-gradient(135deg,#1a3a6e,#0d2248);border:1px solid #2a5aaa;color:#88ccff;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:8px">
+📲 Installer l'application sur ce téléphone
+</button>`:""}
+    ${typeof deferredInstallPrompt!=="undefined"&&deferredInstallPrompt?`
+    <button onclick="installApp()" style="width:100%;background:linear-gradient(135deg,#1a3a6e,#0d2248);border:1px solid #2a5aaa;color:#88ccff;padding:12px;border-radius:12px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:10px">
+      INSTALLER L'APPLICATION
+    </button>`:""}
+${g?`<button onclick="confirmDeleteGarden()" style="width:100%;background:linear-gradient(135deg,#3a0a0a,#200505);border:1px solid #6e1a1a;color:#dd6655;padding:12px;border-radius:12px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:10px">💔 Quitter & supprimer le jardin</button>`:""}
+    <button class="btn btn-red" style="width:100%" onclick="doLogout()">Se déconnecter</button>
+</div>`;
+}
+
+function viewPublicGarden(gid){
+  const g=DB.getGarden(gid);
+  if(!g){showToast("Jardin introuvable");return;}
+  const u1=DB.getUser(g.couple[0]);
+  const u2=DB.getUser(g.couple[1]);
+  const rd2=relDays(g);
+
+  let plotsHtml="";
+  for(let i=0;i<g.gardenSize;i++){
+    const plot=g.plots[i];
+    if(!plot.plant){
+      plotsHtml+=`<div class="plot plot-empty" style="cursor:default"><div style="font-size:14px;opacity:.3">•</div></div>`;
+      continue;
+    }
+    const plant=CATALOG.find(x=>x.id===plot.plant);
+    const gr=growthOf(plot,g);
+    const rar=plant?RARITIES[plant.r]:null;
+    const plantSvg=plant?(plant.t==="flower"?svgFlower(plant,48,gr):svgTree(plant,48,gr)):"";
+    plotsHtml+=`<div class="plot" style="border-color:${rar?.color||"#4a6a3a"}44;cursor:default">
+<div style="animation:swayPlant 3s ease-in-out infinite">${plantSvg}</div>
+<div style="position:absolute;bottom:2px;right:3px;font-family:'Press Start 2P',monospace;font-size:7px;color:${rar?.color||"#9edd9e"}">${Math.floor(gr*100)}%</div>
+</div>`;
+  }
+
+  APP.pendingModal={type:"publicGarden",g,gid,u1,u2,rd:rd2,plotsHtml};
+  render();
+}
+
+function openFriendGarden(uid){
+  const u=DB.getUser(uid);
+  if(u?.gardenId) viewPublicGarden(u.gardenId);
+}
+
+function renderModal(m,g){
+  let inner="";
+
+  if(m.type==="plot"){
+    const plot=g.plots[m.idx];
+    const plant=plot.plant?CATALOG.find(x=>x.id===plot.plant):null;
+    const gr=plant?growthOf(plot,g):0;
+    const rar=plant?RARITIES[plant.r]:null;
+    const wx=WEATHER.find(x=>x.id===g?.wx)||WEATHER[0];
+    const ideal=plant&&(plant.wx===g?.wx||plant.wx==="any");
+
+    if(!plant){
+      inner=`<div style="text-align:center;padding:8px 0 16px">
+<div style="font-weight:800;font-size:14px;margin-top:10px">Emplacement vide</div>
+<div style="font-size:11px;color:#668;margin-top:5px">Achetez des graines dans le Marché — ton partenaire devra valider.</div>
+</div>
+<button class="btn btn-green" style="width:100%" onclick="closeModal();switchTab('shop')">Aller au Marché</button>`;
+    } else {
+      const plantSvg=plant.t==="flower"?svgFlower(plant,80,gr):svgTree(plant,80,gr);
+      const modalAuraStyle=gr>=1?(plant.r==="divine"?`position:relative;filter:drop-shadow(0 0 12px ${rar?.color||"#FFD700"}) drop-shadow(0 0 24px ${rar?.color||"#FFD700"}44)`:`position:relative;filter:drop-shadow(0 0 8px ${rar?.color||"#9edd9e"})`):"";
+      inner=`<div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:14px">
+<div>
+<div style="font-weight:900;font-size:15px;color:#eee">${plant.name}</div>
+<span class="badge badge-${plant.r}" style="margin-top:4px;display:inline-block">${rar.label}</span>
+</div>
+<button onclick="closeModal()" style="background:none;border:none;color:#556;cursor:pointer;font-size:22px;padding:0">×</button>
+</div>
+<div style="display:flex;justify-content:center;margin:10px 0;animation:floatAnim 3s ease-in-out infinite"><div style="${modalAuraStyle}">${plantSvg}</div></div>
+<div style="margin-bottom:12px">
+<div style="display:flex;justify-content:space-between;font-size:10px;color:#668;margin-bottom:4px"><span>Croissance</span><span>${gr>=1?"✅ Mature":Math.floor(gr*100)+"%"}</span></div>
+<div class="progress-track"><div class="progress-fill" style="width:${gr*100}%;background:linear-gradient(90deg,${rar.color}88,${rar.color})"></div></div>
+<div style="font-size:10px;color:#99aa88;margin-top:4px;text-align:center">${(()=>{if(gr>=1)return"";const p2=CATALOG.find(x=>x.id===plot.plant);const rem=Math.max(0,p2.days-((Date.now()-new Date(plot.plantedAt).getTime())/864e5));return rem<1?Math.floor(rem*24)+"h restantes":Math.floor(rem)+"j "+Math.floor((rem%1)*24)+"h restants";})()}</div>
+</div>
+<div style="font-size:11px;color:#99aa88;margin-bottom:10px">${plant.desc}</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px;font-size:11px">
+<div class="info-card"><div style="color:#557">Météo idéale</div><div style="color:${ideal?"#4CAF50":"#aa6633"};font-weight:700;margin-top:2px">${WEATHER.find(x=>x.id===plant.wx)?.label||plant.wx}${ideal?" ✓":""}</div></div>
+<div class="info-card"><div style="color:#557">Maintenant</div><div style="color:${wx.color};font-weight:700;margin-top:2px">${wx.label}</div></div>
+</div>
+${plot.photo?`<div style="margin-bottom:12px">
+<div style="font-size:10px;color:#668;font-weight:700;margin-bottom:6px">Photo souvenir</div>
+<div style="border-radius:10px;overflow:hidden;border:2px solid ${rar.color}44"><img src="${plot.photo}" style="width:100%;display:block;max-height:200px;object-fit:cover"/></div>
+${plot.photoDate?`<div style="font-size:9px;color:#445;padding:4px 0;text-align:center">${plot.photoDate}</div>`:""}
+</div>`:""}
+<div style="display:flex;gap:8px">
+<button class="btn btn-red btn-sm" style="flex:0 0 auto;padding:11px 14px" onclick="confirmRemovePlant(${m.idx})" title="Supprimer la plante">🗑️ Supprimer</button>
+<button class="btn btn-green" style="flex:1" onclick="closeModal()">Fermer</button>
+</div>`;
+    }
+  }
+
+  else if(m.type==="spend"){
+    const plant=CATALOG.find(x=>x.id===m.itemId);
+    const rar=plant?RARITIES[plant.r]:null;
+    const plantSvg=plant?(plant.t==="flower"?svgFlower(plant,60,1):svgTree(plant,60,1)):"";
+    const fromOther=m.fromOther;
+    inner=`${fromOther?`<div style="background:rgba(255,200,0,.15);border:1px solid #FFD70033;border-radius:10px;padding:8px;margin-bottom:10px;font-size:11px;color:#FFD700;font-weight:800;text-align:center">🔔 Ton partenaire demande ton accord !</div>`:""}
+<div style="text-align:center;margin-bottom:16px">
+<div style="font-size:18px;margin-bottom:8px">💬 Approbation requise</div>
+<div style="font-weight:800;font-size:13px;color:#eee">Ton partenaire souhaite acheter:</div>
+</div>
+${plant?`<div style="padding:12px;background:linear-gradient(160deg,${rar.bg},#060e06);border:2px solid ${rar.color}44;border-radius:12px;display:flex;gap:12px;align-items:center;margin-bottom:16px;box-shadow:${rar.glow}">
+<div style="animation:swayPlant 3s ease-in-out infinite">${plantSvg}</div>
+<div>
+<div style="font-weight:800;font-size:13px;color:#eee">${plant.name}</div>
+<span class="badge badge-${plant.r}" style="display:inline-block;margin-top:3px">${rar.label}</span>
+<div style="font-size:13px;font-weight:800;color:#FFD700;margin-top:5px">${plant.price} 🪙</div>
+</div>
+</div>`:""}
+<div style="display:flex;gap:10px">
+<button class="btn btn-red" style="flex:1;padding:11px 0;font-size:13px" onclick="rejectModal()">Refuser</button>
+<button class="btn btn-green" style="flex:1;padding:11px 0;font-size:13px" onclick="approveModal()">Accepter ✓</button>
+</div>`;
+  }
+
+  else if(m.type==="expand"){
+    inner=`<div style="text-align:center;margin-bottom:16px">
+<div style="font-size:18px;margin-bottom:10px">🌳 Agrandir le jardin</div>
+<div style="font-weight:800;color:#eee">Nouvel emplacement</div>
+<div style="font-size:12px;color:#99aa88;margin-top:6px">Ajouter une nouvelle parcelle au jardin commun</div>
+<div style="font-size:22px;font-weight:900;color:#FFD700;margin-top:10px">${m.cost} 🪙</div>
+</div>
+<div style="display:flex;gap:10px">
+<button class="btn btn-red" style="flex:1;padding:11px 0" onclick="closeModal()">Annuler</button>
+<button class="btn btn-green" style="flex:1;padding:11px 0" onclick="approveExpand(${m.idx},${m.cost})">Débloquer</button>
+</div>`;
+  }
+
+  else if(m.type==="verifying"){
+    inner=`<div style="text-align:center;padding:20px 0">
+${svgAI("verify",56)}
+<div style="font-weight:800;font-size:13px;color:#eee;margin-top:12px">Inspector Légume analyse...</div>
+<div style="font-size:11px;color:#668;margin-top:6px;animation:shimmer 1.2s ease infinite">Vérification de votre photo en cours</div>
+<div style="margin-top:16px;display:flex;justify-content:center;gap:6px">
+${[0,1,2].map(i=>`<div style="width:8px;height:8px;border-radius:50%;background:#4CAF50;animation:shimmer 1.2s ease ${i*.3}s infinite"></div>`).join("")}
+</div>
+</div>`;
+  }
+
+  else if(m.type==="eventResult"){
+    inner=`<div style="text-align:center;padding:8px 0">
+${svgAI("verify",56)}
+<div style="font-size:20px;font-weight:900;color:${m.ok?"#4CAF50":"#f44"};margin-top:12px">${m.ok?"Photo validée !":"Non validée"}</div>
+<div style="font-size:12px;color:#99aa88;margin-top:8px;line-height:1.5">${m.msg}</div>
+${m.ok?`<div style="margin-top:8px;font-size:11px;color:#FFD700;font-weight:700">Récompense obtenue ! 🎉</div>`:""}
+</div>
+${m.ok&&m.photo?`<div style="margin:14px 0;border-radius:10px;overflow:hidden;border:2px solid #4a8a4a"><img src="${m.photo}" style="width:100%;display:block;max-height:180px;object-fit:cover"/></div>`:""}
+<button class="btn btn-green" style="width:100%;margin-top:14px" onclick="confirmEventResult(${m.ok},'${encodeURIComponent(m.photo||"")}')">
+${m.ok?"Continuer":"Réessayer"}
+</button>`;
+  }
+
+  else if(m.type==="publicGarden"){
+    inner=`<div style="margin-bottom:12px">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div>
+<div style="font-size:14px;font-weight:900;color:#eee">${m.u1?.pseudo||"?"} & ${m.u2?.pseudo||"?"}</div>
+<div style="font-size:11px;color:#446;margin-top:2px">${m.rd} jours ensemble ♥</div>
+</div>
+<button onclick="closeModal()" style="background:none;border:none;color:#556;cursor:pointer;font-size:22px;padding:0">×</button>
+</div>
+</div>
+<div style="background:rgba(20,50,15,.4);border-radius:14px;padding:12px;border:1px solid rgba(80,140,60,.2)">
+<div style="display:grid;grid-template-columns:repeat(3,76px);gap:8px;justify-content:center">
+${m.plotsHtml}
+</div>
+</div>
+<div style="font-size:10px;color:#334;text-align:center;margin-top:8px">Mode lecture seule — tu ne peux pas modifier ce jardin</div>`;
+  }
+
+  else if(m.type==="removePlant"){
+    const plot=g.plots[m.idx];
+    const plant=plot.plant?CATALOG.find(x=>x.id===plot.plant):null;
+    const rar=plant?RARITIES[plant.r]:null;
+    const plantSvg=plant?(plant.t==="flower"?svgFlower(plant,60,growthOf(plot,g)):svgTree(plant,60,growthOf(plot,g))):"";
+    inner=`<div style="text-align:center;margin-bottom:16px">
+<div style="font-size:22px;margin-bottom:8px">🗑️</div>
+<div style="font-weight:900;font-size:14px;color:#eee">Supprimer cette plante ?</div>
+<div style="font-size:11px;color:#99aa88;margin-top:5px">Elle sera définitivement retirée du jardin.</div>
+</div>
+${plant?`<div style="display:flex;justify-content:center;margin:10px 0;animation:floatAnim 3s ease-in-out infinite">${plantSvg}</div>
+<div style="text-align:center;margin-bottom:16px">
+<div style="font-weight:800;font-size:13px;color:#eee">${plant.name}</div>
+<span class="badge badge-${plant.r}" style="display:inline-block;margin-top:4px">${rar.label}</span>
+</div>`:""}
+<div style="display:flex;gap:10px">
+<button class="btn btn-ghost" style="flex:1;padding:11px 0" onclick="closeModal()">Annuler</button>
+<button class="btn btn-red" style="flex:1;padding:11px 0" onclick="doRemovePlant(${m.idx})">Oui, supprimer</button>
+</div>`;
+  }
+
+  else if(m.type==="deleteGarden"){
+    inner=`<div style="text-align:center;margin-bottom:16px">
+<div style="font-size:32px;margin-bottom:10px">💔</div>
+<div style="font-weight:900;font-size:15px;color:#eee;margin-bottom:8px">Supprimer le jardin ?</div>
+<div style="font-size:12px;color:#99aa88;line-height:1.6;margin-bottom:14px">Toutes vos plantes, votre historique et votre jardin commun seront <b style="color:#dd6655">définitivement supprimés</b>. Cette action est irréversible.</div>
+<div style="background:rgba(110,26,26,.25);border:1px solid #6e1a1a44;border-radius:12px;padding:12px;font-size:11px;color:#dd8877;line-height:1.6">
+Ton partenaire perdra également accès au jardin.
+</div>
+</div>
+<div style="display:flex;gap:10px">
+<button class="btn btn-ghost" style="flex:1;padding:12px 0" onclick="closeModal()">Annuler</button>
+<button class="btn btn-red" style="flex:1;padding:12px 0;font-size:12px" onclick="doDeleteGarden()">Supprimer définitivement</button>
+</div>`;
+  }
+
+  else if(m.type==="openChest"){
+    const chest=CHESTS[m.chestRarity]||CHESTS.common;
+    const result=m.result;
+    if(!result){
+      // Show chest before opening
+      inner=`<div style="text-align:center;padding:8px">
+        <div style="font-size:13px;font-weight:900;color:${chest.color};margin-bottom:6px;letter-spacing:2px">${chest.label.toUpperCase()}</div>
+        <div style="width:80px;height:80px;margin:16px auto;border-radius:16px;background:${RARITIES[m.chestRarity]?.bg||"#111"};border:2px solid ${chest.color};box-shadow:${chest.glow};display:flex;align-items:center;justify-content:center;font-size:40px;animation:pulse 1.5s ease infinite">
+          ${svgChest(m.chestRarity)}
+        </div>
+        <div style="font-size:11px;color:#668;margin-bottom:18px">Appuie pour ouvrir</div>
+        <button class="btn btn-green" style="width:100%;font-size:14px;font-weight:900;letter-spacing:1px" onclick="doOpenChest('${m.chestRarity}','${m.invIdx}')">OUVRIR</button>
+        <button class="btn" style="width:100%;margin-top:8px;background:rgba(255,255,255,.05);color:#668" onclick="closeModal()">GARDER POUR PLUS TARD</button>
+      </div>`;
+    } else {
+      // Show result
+      const res=result;
+      const resColor=res.type==="seed"?(RARITIES[res.rarity]?.color||"#eee"):res.type==="boost"?"#44ffaa":"#FFD700";
+      const resLabel=res.type==="seed"?`Graine : ${res.plant?.name||"?"} (${RARITIES[res.rarity]?.label||res.rarity})`:res.type==="boost"?`Boost x2 — ${res.hours}h`:res.amount+" pieces";
+      inner=`<div style="text-align:center;padding:8px">
+        <div style="font-size:12px;color:#668;margin-bottom:8px">COFFRE OUVERT !</div>
+        <div style="font-size:32px;margin:12px 0;animation:pulse .8s ease 3">
+          ${res.type==="seed"?svgPlant(res.plant?.px||"#fff",1):res.type==="boost"?"⚡":"🪙"}
+        </div>
+        <div style="font-size:14px;font-weight:900;color:${resColor};margin-bottom:6px;text-shadow:0 0 10px ${resColor}66">${resLabel}</div>
+        <div style="font-size:10px;color:#446;margin-bottom:18px">${res.type==="seed"?res.plant?.desc||"":""}</div>
+        <button class="btn btn-green" style="width:100%;font-weight:900" onclick="closeModal();render()">SUPER !</button>
+      </div>`;
+    }
+  }
+  else if(m.type==="iosInstall"){
+    inner=`<div style="text-align:center;padding:8px 0">
+<div style="font-size:28px;margin-bottom:12px">📲</div>
+<div style="font-weight:900;font-size:15px;color:#eee;margin-bottom:10px">Installer Notre Jardin sur iPhone</div>
+<div style="background:rgba(0,0,0,.3);border-radius:12px;padding:14px;text-align:left">
+<div style="font-size:12px;color:#99aa88;line-height:1.8">
+<div style="margin-bottom:8px">1️⃣ Appuie sur <span style="color:#eee;font-weight:800">⬆️ Partager</span> en bas de Safari</div>
+<div style="margin-bottom:8px">2️⃣ Fais défiler et appuie sur <span style="color:#eee;font-weight:800">"Sur l'écran d'accueil"</span></div>
+<div>3️⃣ Appuie sur <span style="color:#eee;font-weight:800">Ajouter</span> — c'est tout !</div>
+</div>
+</div>
+<div style="font-size:10px;color:#446;margin-top:10px">L'app fonctionne hors-ligne une fois installée ✓</div>
+</div>
+<button class="btn btn-green" style="width:100%;margin-top:14px" onclick="closeModal()">Compris !</button>`;
+  }
+
+  return`<div class="overlay" onclick="closeModalOutside(event)"><div class="modal">${inner}</div></div>`;
+}
+
+window.switchTab=function(t){APP.currentTab=t;APP.selectedShopItem=null;render();};
+window.closeModal=function(){APP.pendingModal=null;render();};
+window.closeModalOutside=function(e){if(e.target.classList.contains("overlay"))closeModal();};
+window.openPlotModal=function(idx){APP.pendingModal={type:"plot",idx};render();};
+
+window.confirmDeleteGarden=function(){
+  APP.pendingModal={type:"deleteGarden"};render();
+};
+
+window.doDeleteGarden=async function(){
+  const g=getGarden();
+  if(!g)return;
+  // Remove garden from DB
+  const gardens=DB.getGardens();
+  delete gardens[APP.gardenId];
+  DB.saveGardens(gardens);
+  // Remove gardenId from both users
+  const uid1=g.couple[0];
+  const uid2=g.couple[1];
+  if(uid1) DB.updateUser(uid1,{gardenId:null});
+  if(uid2) DB.updateUser(uid2,{gardenId:null});
+  await dbSave();
+  // Log out cleanly
+  clearInterval(incomeTimer);
+  APP={screen:"login",currentUid:APP.currentUid,gardenId:null,currentTab:"garden",pendingModal:null,selectedShopItem:null,toast:null,authError:null,calendarPermission:false,notifPermission:false,now:new Date()};
+  APP.screen="main"; // stay logged in, just no garden
+  showToast("Jardin supprimé. 💔");
+  render();
+};
+
+window.confirmRemovePlant=function(idx){
+  APP.pendingModal={type:"removePlant",idx};render();
+};
+
+window.doRemovePlant=function(idx){
+  const g=getGarden();if(!g)return;
+  const plot=g.plots[idx];
+  const plant=plot.plant?CATALOG.find(x=>x.id===plot.plant):null;
+  g.plots[idx]={...g.plots[idx],plant:null,plantedAt:null,photo:null,photoDate:null};
+  g.notifications.push({id:Date.now(),text:`${plant?.name||"Plante"} supprimée du jardin.`,read:false});
+  saveGarden(g);
+  closeModal();
+  render();
+};
+
+window.selectShopItem=function(id){
+  APP.selectedShopItem=APP.selectedShopItem===id?null:id;
+  render();
+};
+
+window.unlockPlot=function(idx){
+  const g=getGarden();if(!g)return;
+  const cost=(idx+1)*150;
+  if(g.money<cost){showToast("Pas assez de pièces");return;}
+  APP.pendingModal={type:"expand",idx,cost};render();
+};
+
+window.approveExpand=function(idx,cost){
+  const g=getGarden();if(!g)return;
+  g.money-=cost;
+  g.gardenSize=Math.max(g.gardenSize,idx+1);
+  g.notifications.push({id:Date.now(),text:"Jardin agrandi ! Nouvel emplacement débloqué.",read:false});
+  saveGarden(g);closeModal();render();
+};
+
+window.requestBuy=async function(itemId){
+  const g=getGarden();if(!g)return;
+  const plant=CATALOG.find(x=>x.id===itemId);
+  if(!plant)return;
+  if(g.money<plant.price){showToast("Pas assez de pièces");return;}
+  // Save pending request to DB so partner sees it
+  const req={id:DB.genId(),type:"buy",itemId,from:APP.currentUid,gardenId:APP.gardenId,status:"pending",sentAt:new Date().toISOString()};
+  const reqs=DB.getRequests();
+  // Remove any previous pending buy request
+  const filtered=reqs.filter(r=>!(r.type==="buy"&&r.gardenId===APP.gardenId&&r.status==="pending"));
+  filtered.push(req);
+  DB.saveRequests(filtered);
+  await dbSave();
+  sendApprovalNotif(`${getMe()?.pseudo} veut acheter ${plant.name} pour le jardin !`);
+  showToast("Demande envoyée à ton partenaire !");
+  render();
+};
+
+window.approveModal=async function(){
+  const m=APP.pendingModal;
+  const g=getGarden();if(!g)return;
+  if(m.type==="spend"){
+    const plant=CATALOG.find(x=>x.id===m.itemId);
+    if(!plant||g.money<plant.price){closeModal();return;}
+    const emptyIdx=g.plots.findIndex((p,i)=>!p.plant&&i<g.gardenSize);
+    if(emptyIdx===-1){showToast("Jardin plein ! Agrandissez d'abord.");closeModal();saveGarden(g);render();return;}
+    g.money-=plant.price;
+    g.plots[emptyIdx]={...g.plots[emptyIdx],plant:plant.id,plantedAt:new Date().toISOString(),photo:null};
+    g.shopItems=g.shopItems.map(x=>x.id===plant.id?{...x,qty:x.qty-1}:x).filter(x=>x.qty>0);
+    g.pendingReq=null;
+    g.notifications.push({id:Date.now(),text:`"${plant.name}" planté dans le jardin !`,read:false});
+    // Mark request as approved in DB
+    const reqs=DB.getRequests().map(r=>r.id===m.reqId?{...r,status:"approved"}:r);
+    DB.saveRequests(reqs);
+    saveGarden(g);await dbSave();closeModal();render();
+  }
+};
+
+// Partner sees pending buy requests and can approve/reject
+window.checkPartnerRequests=async function(){
+  _dbCache=null;
+  await dbFetch();
+  const reqs=DB.getRequests().filter(r=>r.type==="buy"&&r.gardenId===APP.gardenId&&r.status==="pending"&&r.from!==APP.currentUid);
+  if(reqs.length===0){showToast("Aucune demande en attente");return;}
+  const req=reqs[0];
+  APP.pendingModal={type:"spend",itemId:req.itemId,reqId:req.id,fromOther:true};
+  render();
+};
+
+window.rejectModal=function(){
+  const g=getGarden();if(!g)return;
+  g.pendingReq=null;
+  g.notifications.push({id:Date.now(),text:"Achat refusé.",read:false});
+  saveGarden(g);closeModal();render();
+};
+
+window.approveReq=function(){
+  const g=getGarden();if(!g||!g.pendingReq)return;
+  APP.pendingModal={type:"spend",itemId:g.pendingReq.itemId};render();
+};
+window.rejectReq=function(){
+  const g=getGarden();if(!g)return;
+  g.pendingReq=null;
+  g.notifications.push({id:Date.now(),text:"Demande refusée.",read:false});
+  saveGarden(g);render();
+};
+
+window.clearNotifs=function(){
+  const g=getGarden();if(!g)return;
+  g.notifications=g.notifications.map(n=>({...n,read:true}));
+  saveGarden(g);render();
+};
+
+window.handleEventPhoto=async function(e, doneKey, photoKey, photoDateKey){
+  const file=e.target.files?.[0];if(!file)return;
+  // Default to legacy keys
+  doneKey=doneKey||"eventDone";
+  photoKey=photoKey||"eventPhoto";
+  photoDateKey=photoDateKey||"eventPhotoDate";
+  const reader=new FileReader();
+  reader.onload=async function(ev2){
+    const dataUrl=ev2.target.result;
+    const photoDate=formatDateShort(getCurrentDateTime());
+    const g=getGarden();
+    const evMap={dailyEventDone:g?.dailyEvent,weeklyEventDone:g?.weeklyEvent,monthlyEventDone:g?.monthlyEvent,specialEventDone:g?.specialEvent,eventDone:g?.event};
+    const ev=evMap[doneKey]||g?.dailyEvent;
+    APP.pendingModal={type:"verifying"};render();
+    try{
+      const resp=await fetch("https://api.anthropic.com/v1/messages",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+          model:"claude-sonnet-4-20250514",
+          max_tokens:200,
+          messages:[{role:"user",content:[
+            {type:"image",source:{type:"base64",media_type:file.type||"image/jpeg",data:dataUrl.split(",")[1]}},
+            {type:"text",text:`Tu es Inspector Légume, vérificateur photo d'un jeu de jardin de couple. L'événement à vérifier est: "${ev?.name}" - "${ev?.desc}". Regarde la photo et dis si elle correspond à l'activité décrite. Réponds EXACTEMENT par: VALIDE si la photo montre bien l'activité (ou quelque chose de cohérent), ou INVALIDE si la photo ne correspond pas du tout. Puis ajoute 1 phrase marrante en character.`}
+          ]}]
+        })
+      });
+      const data=await resp.json();
+      const txt=data.content?.[0]?.text||"";
+      const ok=txt.includes("VALIDE")&&!txt.includes("INVALIDE");
+      APP.pendingModal={type:"eventResult",ok,msg:txt.replace("VALIDE","").replace("INVALIDE","").trim(),photo:dataUrl,photoDate,doneKey,photoKey,photoDateKey,ev};
+    }catch(err){
+      const ok=Math.random()>.25;
+      APP.pendingModal={type:"eventResult",ok,msg:ok?"Photo acceptée ! Bien joué !":"Hmm, cette photo ne correspond pas...",photo:dataUrl,photoDate,doneKey,photoKey,photoDateKey,ev};
+    }
+    render();
+  };
+  reader.readAsDataURL(file);
+};
+
+window.confirmEventResult=function(ok,photoEncoded){
+  const g=getGarden();if(!g)return;
+  if(ok){
+    const photo=decodeURIComponent(photoEncoded);
+    const photoDate=APP.pendingModal?.photoDate||formatDateShort(APP.now);
+    const doneKey=APP.pendingModal?.doneKey||"eventDone";
+    const photoKey=APP.pendingModal?.photoKey||"eventPhoto";
+    const photoDateKey=APP.pendingModal?.photoDateKey||"eventPhotoDate";
+    const ev=APP.pendingModal?.ev||g.event;
+    g[doneKey]=true;
+    g[photoKey]=photo;
+    g[photoDateKey]=photoDate;
+    if(!g.inventory) g.inventory=[];
+    if(ev?.reward==="money") g.money+=ev.amount;
+    if(ev?.reward==="chest"){
+      const cr=ev.chestRarity||"uncommon";
+      g.inventory.push({id:DB.genId(),type:"chest",chestRarity:cr,obtainedAt:new Date().toISOString()});
+      showToast("Coffre "+( CHESTS[cr]?.label||cr)+" ajouté à votre inventaire !");
+    }
+    const plotIdx=g.plots.findIndex(p=>p.plant&&!p.photo);
+    if(plotIdx>=0&&photo){g.plots[plotIdx]={...g.plots[plotIdx],photo,photoDate};}
+    g.notifications.push({id:Date.now(),text:`Défi "${ev.name}" validé ! Récompense obtenue.`,read:false});
+  }
+  saveGarden(g);closeModal();render();
+};
+
+window.sendFriendRequest=function(){
+  const val=document.getElementById("addFriendInput")?.value?.trim();
+  if(!val){showToast("Entre un pseudo ou un ID");return;}
+  const users=DB.getUsers();
+  const targetUid=Object.keys(users).find(k=>users[k].pseudo===val||k.startsWith(val));
+  if(!targetUid||targetUid===APP.currentUid){showToast("Utilisateur introuvable");return;}
+  const reqs=DB.getRequests();
+  if(reqs.find(r=>r.from===APP.currentUid&&r.to===targetUid&&r.status==="pending")){showToast("Demande déjà envoyée");return;}
+  if((DB.getUser(APP.currentUid)?.friendIds||[]).includes(targetUid)){showToast("Déjà ami(e)");return;}
+  reqs.push({id:DB.genId(),from:APP.currentUid,to:targetUid,status:"pending",sentAt:new Date().toISOString()});
+  DB.saveRequests(reqs);
+  sendApprovalNotif(`${getMe()?.pseudo} veut être ton ami sur Notre Jardin !`);
+  showToast("Demande d'ami envoyée !");
+  render();
+};
+
+window.acceptFriend=function(reqId){
+  const reqs=DB.getRequests();
+  const req=reqs.find(r=>r.id===reqId);
+  if(!req)return;
+  req.status="accepted";
+  DB.saveRequests(reqs);
+
+  const me=DB.getUser(APP.currentUid);
+  const them=DB.getUser(req.from);
+  DB.updateUser(APP.currentUid,{friendIds:[...(me?.friendIds||[]),req.from]});
+  DB.updateUser(req.from,{friendIds:[...(them?.friendIds||[]),APP.currentUid]});
+  showToast(`${them?.pseudo} ajouté(e) en ami(e) !`);
+  render();
+};
+
+window.rejectFriend=function(reqId){
+  const reqs=DB.getRequests();
+  const req=reqs.find(r=>r.id===reqId);
+  if(req)req.status="rejected";
+  DB.saveRequests(reqs);
+  render();
+};
+
+window.togglePublic=function(){
+  const g=getGarden();if(!g)return;
+  g.isPublic=!g.isPublic;
+  if(g.isPublic){
+
+    g.notifications.push({id:Date.now(),text:`Jardin ${g.isPublic?"rendu public":"rendu privé"}.`,read:false});
+  }
+  saveGarden(g);render();
+};
+
+window.viewPublicGarden=function(gid){ viewPublicGarden(gid); };
+window.openFriendGarden=function(uid){ openFriendGarden(uid); };
+window.copyMyId=function(){ copyMyId(); };
+window.requestCalendar=function(){ requestCalendar(); };
+window.requestNotifications=function(){ requestNotifications(); };
+
+window.doLogout=function(){
+
+  const g=getGarden();
+  if(g){
+    const rd=relDays(g);
+    const me=DB.getUser(APP.currentUid);
+    if(rd>=(me?.biggestRelDays||0)){
+      DB.updateUser(APP.currentUid,{biggestRelDays:rd});
+    }
+  }
+  DB.clearSession();
+  clearInterval(incomeTimer);
+  APP={screen:"login",currentUid:null,gardenId:null,currentTab:"garden",pendingModal:null,selectedShopItem:null,toast:null,authError:null,calendarPermission:false,notifPermission:false,now:new Date()};
+  coupleSetupMode="menu";
+  render();
+};
+
+let deferredInstallPrompt = null;
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  render();
+});
+window.installApp = async function() {
+  if (!deferredInstallPrompt) { showToast("Ouvre dans Chrome pour installer"); return; }
+  deferredInstallPrompt.prompt();
+  const { outcome } = await deferredInstallPrompt.userChoice;
+  if (outcome === "accepted") { showToast("Application installee !"); deferredInstallPrompt = null; }
+  render();
+};
+function svgChest(rarity){
+  const c=RARITIES[rarity]?.color||"#8B9B6B";
+  const glow=rarity==="divine"?`filter:drop-shadow(0 0 6px ${c})`:"";
+  return `<svg width="48" height="40" viewBox="0 0 48 40" fill="none" style="${glow}">
+    <!-- Body -->
+    <rect x="4" y="17" width="40" height="22" rx="3" fill="#2a1a0a"/>
+    <rect x="4" y="17" width="40" height="22" rx="3" stroke="${c}" stroke-width="1.5" fill="${c}22"/>
+    <!-- Wood planks -->
+    <rect x="6" y="20" width="36" height="4" fill="${c}18"/>
+    <rect x="6" y="28" width="36" height="4" fill="${c}18"/>
+    <!-- Corner bolts -->
+    <circle cx="9" cy="20" r="2" fill="${c}88" stroke="${c}" stroke-width=".5"/>
+    <circle cx="39" cy="20" r="2" fill="${c}88" stroke="${c}" stroke-width=".5"/>
+    <circle cx="9" cy="35" r="2" fill="${c}88" stroke="${c}" stroke-width=".5"/>
+    <circle cx="39" cy="35" r="2" fill="${c}88" stroke="${c}" stroke-width=".5"/>
+    <!-- Lid -->
+    <rect x="4" y="8" width="40" height="11" rx="3" fill="#1a0f06"/>
+    <rect x="4" y="8" width="40" height="11" rx="3" stroke="${c}" stroke-width="1.5" fill="${c}33"/>
+    <!-- Lid curve highlight -->
+    <ellipse cx="24" cy="10" rx="16" ry="4" fill="${c}22"/>
+    <!-- Lid-body seam -->
+    <line x1="4" y1="17" x2="44" y2="17" stroke="${c}" stroke-width="1"/>
+    <!-- Lock hasp -->
+    <rect x="19" y="13" width="10" height="8" rx="2" fill="#1a1a2a" stroke="${c}" stroke-width="1.5"/>
+    <rect x="21" y="15" width="6" height="5" rx="1" fill="${c}cc"/>
+    <circle cx="24" cy="17" r="1.5" fill="#0a0a0a"/>
+    <!-- Rarity glow band -->
+    ${rarity==="divine"||rarity==="mythic"?`<rect x="4" y="17" width="40" height="1" fill="${c}" opacity=".7"/>`:""}
+    <!-- Lock keyhole -->
+    <circle cx="24" cy="17" r="1" fill="${c}44"/>
+  </svg>`;
+}
+
+function svgPlant(color, scale=1){
+  return `<svg width="${24*scale}" height="${28*scale}" viewBox="0 0 24 28" fill="none">
+    <rect x="10" y="4" width="4" height="16" fill="${color}cc"/>
+    <ellipse cx="12" cy="6" rx="8" ry="6" fill="${color}"/>
+    <ellipse cx="6" cy="12" rx="5" ry="4" fill="${color}aa"/>
+    <ellipse cx="18" cy="12" rx="5" ry="4" fill="${color}aa"/>
+    <rect x="10" y="20" width="4" height="8" fill="#553322"/>
+  </svg>`;
+}
+
+window.doOpenChest = function(chestRarity, invIdx) {
+  const g = getGarden(); if(!g) return;
+  const result = openChest(chestRarity);
+  // Apply result to garden
+  if(result.type==="money"){
+    g.money += result.amount;
+  } else if(result.type==="seed"){
+    // Add seed to inventory as a plantable item
+    if(!g.inventory) g.inventory=[];
+    g.inventory.push({id:DB.genId(), type:"seed", plantId:result.plant.id, rarity:result.rarity, obtainedAt:new Date().toISOString()});
+  } else if(result.type==="boost"){
+    if(!g.inventory) g.inventory=[];
+    g.inventory.push({id:DB.genId(), type:"boost", hours:result.hours, obtainedAt:new Date().toISOString()});
+  }
+  // Remove chest from inventory
+  if(invIdx!==undefined && invIdx!=="" && g.inventory){
+    g.inventory=g.inventory.filter((_,i)=>i!==parseInt(invIdx));
+  }
+  saveGarden(g);
+  APP.pendingModal={type:"openChest",chestRarity,result};
+  render();
+};
+
+window.addChestToInventory = function(chestRarity){
+  const g=getGarden();if(!g)return;
+  if(!g.inventory)g.inventory=[];
+  g.inventory.push({id:DB.genId(),type:"chest",chestRarity,obtainedAt:new Date().toISOString()});
+  saveGarden(g);
+  showToast("Coffre ajouté à l'inventaire !");
+  render();
+};
+
+window.showInventory = function(){
+  APP.screen="inventory";
+  render();
+};
+
+window.showIosInstallTip = function() {
+  APP.pendingModal = {type: "iosInstall"};
+  render();
+};
+
+APP.screen="splash";
+render();
+
+let deferredInstallPrompt = null;
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  render(); 
+});
+
+window.installApp = async function() {
+  if (!deferredInstallPrompt) {
+    showToast("Ouvre ce lien dans Safari ou Chrome pour installer l'app");
+    return;
+  }
+  deferredInstallPrompt.prompt();
+  const { outcome } = await deferredInstallPrompt.userChoice;
+  if (outcome === "accepted") {
+    showToast("Application installée ! 🎉");
+    deferredInstallPrompt = null;
+  }
+  render();
+};
+</script> <script>
+if("serviceWorker" in navigator){
+  window.addEventListener("load",()=>{
+    navigator.serviceWorker.register("/sw.js").then(reg=>{
+      // Dès qu'un nouveau SW est trouvé, il s'installe et prend le contrôle
+      reg.addEventListener("updatefound",()=>{
+        const newWorker=reg.installing;
+        newWorker.addEventListener("statechange",()=>{
+          // Nouveau SW installé et en attente -> on force le rechargement
+          if(newWorker.state==="installed"&&navigator.serviceWorker.controller){
+            // Envoyer message au SW pour qu'il prenne contrôle immédiatement
+            newWorker.postMessage({type:"SKIP_WAITING"});
+          }
+        });
+      });
+      // Quand le SW change de contrôleur -> recharger la page pour avoir la dernière version
+      navigator.serviceWorker.addEventListener("controllerchange",()=>{
+        window.location.reload();
+      });
+    }).catch(e=>console.log("SW err",e));
+    // Vérifier les mises à jour toutes les 60 secondes
+    setInterval(()=>{
+      navigator.serviceWorker.getRegistration().then(reg=>{if(reg)reg.update();});
+    },60000);
+  });
+}
+</script> </body></html> 
